@@ -24,9 +24,9 @@ const RankingEtc = () => {
         <EtcContents>
           <EtcRank>{item.rank}</EtcRank>
           <EtcNick>{item.nink}</EtcNick>
-          <EtcPts>{item.pts}포인트</EtcPts>
-          <EtcDriving>{item.dri}횟수</EtcDriving>
-          <EtcSpanRank>{item.rankAvg}순위</EtcSpanRank>
+          <EtcPts>{item.pts}PT</EtcPts>
+          <EtcDriving>{item.dri}회</EtcDriving>
+          <EtcSpanRank>{item.rankAvg}위</EtcSpanRank>
         </EtcContents>
       </EtcSub>
     );
@@ -73,6 +73,10 @@ const EtcContents = styled.div`
   height: 40px;
   background-color: #fff;
   border: 1px solid #f2f2f2;
+  &:hover {
+    border: 2px solid #0077ff;
+    color: #0077ff;
+  }
 `;
 
 // div 안에 span 태그 모음
