@@ -1,6 +1,6 @@
 import React from 'react';
-import TotalRecord from '../components/TotalRecord';
-import RankChangeTrend from '../components/RankChangeTrend';
+import TotalRecord from '../components/DashBoard/TotalRecord';
+import RankChangeTrend from '../components/DashBoard/RankChangeTrend';
 
 const Home = () => {
     return (
