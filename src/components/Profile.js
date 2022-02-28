@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Selector from "./Selector"
+import SharePopup from "./SharePopup";
 
 const ProfileContainer = styled.div`
     height: 175px;
@@ -99,8 +100,12 @@ const ViewCount = styled.p`
     font-weight: 600;
 `
 
-
 const Profile = () => {
+    const [openShareModal, setOpenShareModal] = useState(false);
+
+    const modalHandler = () => {
+        setOpenShareModal(!openShareModal)
+    }
 
     return (
         <ProfileContainer>
@@ -114,9 +119,17 @@ const Profile = () => {
                     <LinkBox>
                         <Selector />
                         <UserAction>
-                            <RerenderBtn><i className="fa-solid fa-rotate-right"></i> 전적갱신</RerenderBtn>
-                            <ReportBtn><i className="fa-solid fa-bell"></i> 신고하기</ReportBtn>
-                            <ShareBtn><i className="fa-solid fa-share-nodes"></i> 공유하기</ShareBtn>
+                            <RerenderBtn>
+                                <i className="fa-solid fa-rotate-right"></i> 전적갱신
+                            </RerenderBtn>
+                            <ReportBtn>
+                                <i className="fa-solid fa-bell"></i> 신고하기
+                            </ReportBtn>
+                            <ShareBtn onClick={modalHandler}>
+                                <i className="fa-solid fa-share-nodes"></i> 공유하기
+                            </ShareBtn>
+                            {openShareModal ? (
+                                <SharePopup modalHandler={modalHandler} />) : null}
                         </UserAction>
                     </LinkBox>
                 </Info>
