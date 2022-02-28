@@ -22,6 +22,7 @@ const RankChangeTrend = () => {
     const recentGame = 2.72;
     const ranking = 1;
 
+
     //playRank 더미데이터(순위변동)
     const data = [
         { round: 1, rank: 2 },
