@@ -10,7 +10,8 @@ const App = () => {
       {/* 여기에 네비게이션 두시면 됩니다. */}
       <MainContainer>
         <Routes>
-          <Route exact path='/' element={<RankingEtc></RankingEtc>} />
+          <Route exact path='/' element={} />
+          <Route exact path='/' element={} />
         </Routes>
       </MainContainer>
     </BrowserRouter>
