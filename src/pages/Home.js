@@ -1,13 +1,11 @@
 import React from 'react';
-import TotalRecord from '../components/DashBoard/TotalRecord';
-import RankChangeTrend from '../components/DashBoard/RankChangeTrend';
+import DashBoard from '../components/DashBoard';
 
 const Home = () => {
     return (
         <>
-            <h1>Home</h1>
-            <TotalRecord />
-            <RankChangeTrend />
+            <h1>전적조회페이지</h1>
+            <DashBoard />
         </>
     );
 };

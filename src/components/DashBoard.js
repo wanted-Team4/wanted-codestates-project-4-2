@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TotalRecord from './DashBoard/TotalRecord';
-import RankChangeTrend from './DashBoard/RankChangeTrend';
+import RankChangeTrend from './DashBoard
 
 const DashBoard = () => {
     return (
