@@ -41,8 +41,10 @@ const Text = styled.p`
     font-size: 13px;
     font-weight: 300;
 `
+const Xmark = styled.div`
+`
 
-const SharePopup = ({ modalHandler }) => {
+const ShareModal = ({ shareModalHandler }) => {
 
     // const handleShareUrl = () => {
     //     let dummy = document.createElement("input");
@@ -55,15 +57,16 @@ const SharePopup = ({ modalHandler }) => {
     //     document.body.removeChild(dummy);
     //     dispatch(setMessageModal(true, `URL 복사 완료 🙌🏻`));
     // };
-    console.log(modalHandler)
+
     return (
         <Container>
             <TitleBar>
                 <Title>공유하기</Title>
-                <i
-                    className="fa-solid fa-xmark"
-                    onClick={modalHandler}
-                ></i>
+                <Xmark onClick={shareModalHandler}>
+                    <i
+                        className="fa-solid fa-xmark"
+                    ></i>
+                </Xmark>
             </TitleBar>
             <ShareBox>
                 <Facebook>
@@ -79,4 +82,4 @@ const SharePopup = ({ modalHandler }) => {
     );
 }
 
-export default SharePopup;
+export default ShareModal;
