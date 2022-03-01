@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import RecordDetails from './RecordDetails';
 
@@ -78,6 +79,12 @@ const ToggleBtn = styled.button`
 `
 
 const RecordCard = () => {
+    const [openList, setOpenList] = useState(false);
+
+    const recordListHandler = () => {
+        setOpenList(!openList)
+    }
+
     return (
         <>
             <Container>
@@ -89,9 +96,10 @@ const RecordCard = () => {
                 <Track>월드 이탈리아 피사의 사탑</Track>
                 <Kart>몬스터XLE</Kart>
                 <Time>2'13'63</Time>
-                <ToggleBtn><i className="fa-solid fa-caret-down"></i></ToggleBtn>
+                <ToggleBtn onClick={recordListHandler}><i className="fa-solid fa-caret-down"></i></ToggleBtn>
             </Container>
-            <RecordDetails />
+            {openList ? (
+                <RecordDetails />) : null}
         </>
     );
 }
