@@ -7,7 +7,20 @@ import styled from "styled-components";
 const MainContainer = styled.div`
     width: 1000px;
     margin: 0 auto;
-    padding-top: 50px;
+    padding-top: 10px;
+`
+const DataInfo = styled.div`
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: #1f334a;
+`
+const Text = styled.p`
+    margin-top: 3px;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: 400;
 `
 
 const Home = () => {
@@ -36,6 +49,10 @@ const Home = () => {
 
     return (
         <MainContainer>
+            <DataInfo>
+                <i className="fa-solid fa-circle-info"></i>
+                <Text> 카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다</Text>
+            </DataInfo>
             <Profile accessData={accessData} />
             <h1>전적조회페이지</h1>
             <DashBoard />
