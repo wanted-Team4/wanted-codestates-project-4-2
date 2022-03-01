@@ -121,14 +121,16 @@ const TotalRecord = () => {
 export default TotalRecord;
 
 const Container = styled.div`
-    width: 450px;
+    width: 360px;
+    padding: 0 10px;
+    box-sizing: border-box;
 `;
 
 const TextContents = styled.div`
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    width: 100%;
     padding: 10px;
     font-size: 15px;
     font-weight: 500;
@@ -144,7 +146,6 @@ const TextContents = styled.div`
         display: flex;
         align-items: center;
     }
-
     .big {
         font-size: 18px;
         font-weight: 500;
@@ -158,7 +159,6 @@ const ChartContents = styled.div`
     border-top: 1px solid #999;
     display: flex;
     flex-direction: row;
-
     p {
         text-align: center;
         color: #333;

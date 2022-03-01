@@ -12,7 +12,7 @@ const App = () => {
             <MainContainer>
                 <Routes>
                     <Route exact path='/rank' element={<RankingEtc />} />
-                    <Route exact path='/' element={<DashBoard />} />
+                    <Route exact path='/' element={<Home />} />
                 </Routes>
             </MainContainer>
         </BrowserRouter>
