@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import Profile from "../components/Profile";
 import DashBoard from '../components/DashBoard';
-import styled from "styled-components";
+import RecordCard from "../components/RecordCard";
 
 const MainContainer = styled.div`
     width: 1000px;
@@ -21,6 +22,17 @@ const Text = styled.p`
     font-size: 12px;
     margin-left: 5px;
     font-weight: 400;
+`
+const Info = styled.div`
+    display: flex;
+`
+const Dummy = styled.div`
+    height: 500px;
+    border: 1px solid black;
+    flex: 1;
+`
+const RecordBox = styled.div`
+    flex: 2;
 `
 
 const Home = () => {
@@ -56,6 +68,12 @@ const Home = () => {
             <Profile accessData={accessData} />
             <h1>전적조회페이지</h1>
             <DashBoard />
+            <Info>
+                <Dummy />
+                <RecordBox >
+                    <RecordCard />
+                </RecordBox>
+            </Info>
         </MainContainer>
     );
 };

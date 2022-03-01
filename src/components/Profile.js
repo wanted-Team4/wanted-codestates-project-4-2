@@ -141,6 +141,8 @@ const Profile = ({ accessData }) => {
         getMatchData({ accessId })
     }, [])
 
+    console.log(isCharacter)
+
     return (
         <ProfileContainer>
             <InfoBox>
