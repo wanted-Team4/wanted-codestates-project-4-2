@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import Selector from "./common/Selector"
 import ShareModal from "./common/ShareModal";
@@ -108,6 +109,7 @@ const ViewCount = styled.p`
 
 const Profile = ({ accessData }) => {
     const { accessId, name, level } = accessData;
+    const [isCharacter, setIsCharacter] = useState('')
     const [openShareModal, setOpenShareModal] = useState(false);
     const [openReportModal, setOpenReportModal] = useState(false);
 
@@ -119,14 +121,35 @@ const Profile = ({ accessData }) => {
         setOpenReportModal(!openReportModal)
     }
 
+    const getMatchData = ({ accessId }) => {
+        axios.get(`https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=10&match_types=`,
+            {
+                headers: {
+                    Authorization: process.env.REACT_APP_NEXON_KEY
+                }
+            })
+            .then((res) => {
+                setIsCharacter(res.data.matches[0].matches[0].character);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    const characterImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${isCharacter}.png`;
+
+    useEffect(() => {
+        getMatchData({ accessId })
+    }, [])
+
     return (
         <ProfileContainer>
             <InfoBox>
-                <AvatarImageBox src='metadata/character/2ecb10f5e23493727a80a91421d6242a18b131f743676e72317bde4bd5d27131.png' />
+                <AvatarImageBox src={characterImg} />
                 <Info>
                     <UserInfo>
                         <Name>{name}</Name>
-                        <License>{level}</License>
+                        <License>Level {level}</License>
                     </UserInfo>
                     <LinkBox>
                         <Selector />

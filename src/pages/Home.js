@@ -3,7 +3,7 @@ import axios from "axios";
 import Profile from "../components/Profile";
 
 const Home = () => {
-    const [accessData, setAccessData] = useState(null);
+    const [accessData, setAccessData] = useState('');
     let nickname = 'BBEESSTT';
 
     // 닉네임 검색을 이용한 accessId 가져오기
