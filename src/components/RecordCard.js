@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import RecordDetails from './RecordDetails';
 
 const Container = styled.div`
     width: 100%;
@@ -78,17 +79,20 @@ const ToggleBtn = styled.button`
 
 const RecordCard = () => {
     return (
-        <Container>
-            <DayTime>14시간 전</DayTime>
-            <Result>
-                <UserRate>#2</UserRate>
-                <Total>/8</Total>
-            </Result>
-            <Track>월드 이탈리아 피사의 사탑</Track>
-            <Kart>몬스터XLE</Kart>
-            <Time>2'13'63</Time>
-            <ToggleBtn><i className="fa-solid fa-caret-down"></i></ToggleBtn>
-        </Container>
+        <>
+            <Container>
+                <DayTime>14시간 전</DayTime>
+                <Result>
+                    <UserRate>#2</UserRate>
+                    <Total>/8</Total>
+                </Result>
+                <Track>월드 이탈리아 피사의 사탑</Track>
+                <Kart>몬스터XLE</Kart>
+                <Time>2'13'63</Time>
+                <ToggleBtn><i className="fa-solid fa-caret-down"></i></ToggleBtn>
+            </Container>
+            <RecordDetails />
+        </>
     );
 }
 
