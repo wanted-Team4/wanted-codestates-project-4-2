@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { createGlobalStyle } from "styled-components"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { createGlobalStyle } from 'styled-components';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 const GlobalStyle = createGlobalStyle`
@@ -74,6 +74,5 @@ ReactDOM.render(
     <GlobalStyle />
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
-
