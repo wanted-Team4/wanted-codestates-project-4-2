@@ -8,7 +8,7 @@
 
 ### Features
 
-#### 💡 팀 기업과제 3 : 넥슨히어로
+#### 💡 팀 기업과제 3 : 넥슨코리아
 
 ### <br/>
 
@@ -49,13 +49,7 @@ $ git clone "https://github.com/wanted-Team4/wanted-codestates-project-4-2.git"
 $ npm install
 ```
 
-3. `Setting` prettier,
-
-```
-$ npx prettier --write .
-```
-
-4. `start` the project,
+3. `start` the project,
 
 ```
 $ npm start
