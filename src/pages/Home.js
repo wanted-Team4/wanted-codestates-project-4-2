@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Profile from "../components/Profile";
+import DashBoard from '../components/DashBoard';
 
 const Home = () => {
     const [accessData, setAccessData] = useState('');
@@ -29,8 +30,10 @@ const Home = () => {
     return (
         <>
             <Profile accessData={accessData} />
+            <h1>전적조회페이지</h1>
+            <DashBoard />
         </>
-    )
-}
+    );
+};
 
 export default Home;
