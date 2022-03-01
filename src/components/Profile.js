@@ -7,11 +7,10 @@ import ReportModal from "./common/ReportModal";
 
 const ProfileContainer = styled.div`
     height: 175px;
-    width: 1250px;
+    width: 1000px;
     border-width: 1px 1px 1px 5px;
     border-style: solid;
     border-color: #f2f2f2 #f2f2f2 #f2f2f2 #07f;
-    margin: 0 auto;
     background-image: url('/img/background.png');
     background-color: rgba(0,0,0,.025);
     background-size: cover;

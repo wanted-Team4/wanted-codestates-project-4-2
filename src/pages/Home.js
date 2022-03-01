@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Profile from "../components/Profile";
 import DashBoard from '../components/DashBoard';
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 50px;
+`
 
 const Home = () => {
     const [accessData, setAccessData] = useState('');
@@ -28,11 +35,11 @@ const Home = () => {
     }, [])
 
     return (
-        <>
+        <MainContainer>
             <Profile accessData={accessData} />
             <h1>전적조회페이지</h1>
             <DashBoard />
-        </>
+        </MainContainer>
     );
 };
 
