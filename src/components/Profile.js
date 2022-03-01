@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Selector from "./Selector"
-import ShareModal from "./ShareModal";
-import ReportModal from "./ReportModal";
+import Selector from "./common/Selector"
+import ShareModal from "./common/ShareModal";
+import ReportModal from "./common/ReportModal";
 
 const ProfileContainer = styled.div`
     height: 175px;
@@ -28,6 +28,8 @@ const AvatarImageBox = styled.img`
     height: 120px;
 `
 const UserInfo = styled.div`
+    display: flex;
+    align-items: end;
     margin-bottom: 20px;
 `
 const Name = styled.p`
@@ -37,9 +39,12 @@ const Name = styled.p`
     color:#1f334a;
     margin-right: 5px;
 `
-const License = styled.img`
-    width: 30px;
-
+const License = styled.p`
+    font-size: 20px;
+    font-weight: 800;
+    margin-left: 10px;
+    color: #07f;
+    padding-bottom: 10px;
 `
 const LinkBox = styled.div`
     display: flex;
@@ -101,7 +106,8 @@ const ViewCount = styled.p`
     font-weight: 600;
 `
 
-const Profile = () => {
+const Profile = ({ accessData }) => {
+    const { accessId, name, level } = accessData;
     const [openShareModal, setOpenShareModal] = useState(false);
     const [openReportModal, setOpenReportModal] = useState(false);
 
@@ -112,15 +118,15 @@ const Profile = () => {
     const reportModalHandler = () => {
         setOpenReportModal(!openReportModal)
     }
-    console.log(openReportModal)
+
     return (
         <ProfileContainer>
             <InfoBox>
                 <AvatarImageBox src='metadata/character/2ecb10f5e23493727a80a91421d6242a18b131f743676e72317bde4bd5d27131.png' />
                 <Info>
                     <UserInfo>
-                        <Name>BBEESSTT</Name>
-                        <License src='logo192.png'></License>
+                        <Name>{name}</Name>
+                        <License>{level}</License>
                     </UserInfo>
                     <LinkBox>
                         <Selector />
