@@ -27,10 +27,16 @@ const CheerComment = () => {
   const onChangeContents = (e) => {
     setContents(e.target.value);
   };
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      newCommentList.push({ nickname, contents, date: today });
+      setNickname("");
+      setContents("");
+    }
+  };
 
   const onClick = () => {
     newCommentList.push({ nickname, contents, date: today });
-    console.log(newCommentList);
     setNickname("");
     setContents("");
   };
@@ -76,6 +82,7 @@ const CheerComment = () => {
             maxLength={30}
             onChange={onChangeContents}
             value={contents}
+            onKeyPress={onKeyPress}
           />
           <button onClick={() => onClick()}>남기기</button>
           {/* 닉네임 입력 인풋 */}
