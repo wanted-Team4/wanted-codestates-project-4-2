@@ -3,22 +3,26 @@ import styled from "styled-components";
 
 const SpinContainer = styled.div`
   position: absolute;
-  top: 25em;
+  top: 22em;
   left: 50em;
 `;
 const Text = styled.p`
-  margin-top: 15px;
-  font-size: 28px;
+  position: absolute;
+  font-size: 24px;
   font-weight: 400;
   color: #f62459;
+  top: 20em;
+  left: 31em;
 `;
 
 const Loading = () => {
   return (
-    <SpinContainer>
-      <TailSpin color="#f62459" height={90} width={90} />
-      <Text>Loading...</Text>
-    </SpinContainer>
+    <>
+      <SpinContainer>
+        <TailSpin color="#f62459" height={90} width={90} />
+      </SpinContainer>
+      <Text>닉네임을 검색해주세요:D</Text>
+    </>
   );
 };
 
