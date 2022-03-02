@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 
 const RankingEtc = () => {
@@ -26,14 +26,40 @@ const RankingEtc = () => {
     { id: 7, rank: '7', nink: 'q', pts: '1', dri: '1', rankAvg: '4' },
     { id: 8, rank: '8', nink: 't', pts: '1', dri: '1', rankAvg: '4' },
     { id: 9, rank: '9', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 10, rank: '10', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 11, rank: '11', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 12, rank: '12', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 13, rank: '13', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 14, rank: '14', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 15, rank: '15', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 16, rank: '16', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 17, rank: '17', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 18, rank: '18', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 19, rank: '19', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 20, rank: '20', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 21, rank: '21', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 22, rank: '22', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 23, rank: '23', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 24, rank: '24', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 25, rank: '25', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 26, rank: '26', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 27, rank: '27', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 28, rank: '28', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 29, rank: '29', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 30, rank: '30', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 31, rank: '31', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 32, rank: '32', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 33, rank: '33', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
   ];
 
   //4위부터 뿌려줄 컴포넌트 데이터
   const filterData = data.filter(
     (item) => item.id !== 1 && item.id !== 2 && item.id !== 3
   );
+  const [itemIndex, setItemIndex] = useState(0);
+  const [result, setResult] = useState(filterData.slice(0, 20));
 
-  const rankData = filterData.map((item) => {
+  const rankData = result.map((item) => {
     return (
       <EtcSub key={item.id}>
         <EtcContents>
@@ -46,6 +72,32 @@ const RankingEtc = () => {
       </EtcSub>
     );
   });
+
+  const _infiniteScroll = useCallback(() => {
+    // 스크롤 높이 값
+    let scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    // 스크롤 top 값
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    // 화면높이
+    let clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight + 5 >= scrollHeight) {
+      setItemIndex(itemIndex + 20);
+      setResult(
+        result.concat(filterData.slice(itemIndex + 20, itemIndex + 40))
+      );
+    }
+  }, [itemIndex, result]);
+  useEffect(() => {
+    window.addEventListener('scroll', _infiniteScroll, true);
+    return () => window.removeEventListener('scroll', _infiniteScroll, true);
+  }, [_infiniteScroll]);
 
   return (
     <EtcMian>
