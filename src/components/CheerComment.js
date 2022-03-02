@@ -17,11 +17,9 @@ const CheerComment = () => {
     //onChange 이벤트와 e.target.value를 통해 댓글과 닉네임을 input창에 입력할떄 상태값을 변경시켜주기
     const [nickname, setNickname] = useState('');
     const [contents, setContents] = useState('');
-
     const onChangeNickname = (e) => {
         setNickname(e.target.value);
     };
-
     const onChangeContents = (e) => {
         setContents(e.target.value);
     };
@@ -37,7 +35,7 @@ const CheerComment = () => {
         <Container>
             <TextContent>
                 <div>
-                    <span className='blue'>응원</span>
+                    <span className="blue">응원</span>
                     <span>한마디</span>
                 </div>
                 <div>
@@ -55,24 +53,24 @@ const CheerComment = () => {
 
             <CommentBox>
                 {newCommentList.map((el, i) => (
-                    <div className='commentBoard' key={i}>
-                        <div className='blue'>{el.nickname}</div>
-                        <div className='bubble'>{el.contents}</div>
+                    <div className="commentBoard" key={i}>
+                        <div className="blue">{el.nickname}</div>
+                        <div className="bubble">{el.contents}</div>
                         {/* 코멘트를 보여줍니다. 닉네임 : 내용 */}
                     </div>
                 ))}
-                <div className='commentWrite'>
+                <div className="commentWrite">
                     <input
-                        className='nick'
-                        type='text'
-                        placeholder='닉네임'
+                        className="nick"
+                        type="text"
+                        placeholder="닉네임"
                         onChange={onChangeNickname}
                         value={nickname}
                     />
                     <input
-                        className='contents'
-                        type='text'
-                        placeholder='최대 30자'
+                        className="contents"
+                        type="text"
+                        placeholder="최대 30자"
                         maxLength={30}
                         onChange={onChangeContents}
                         value={contents}
