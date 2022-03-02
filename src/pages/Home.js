@@ -1,14 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { Data } from '../atoms';
 import axios from 'axios';
 import Profile from '../components/Profile';
+import RecordCard from '../components/RecordCard';
 import DashBoard from '../components/DashBoard';
 import CheerComment from '../components/CheerComment';
 import MatchBanner from '../components/MatchBanner';
+import RecordCard from '../components/RecordCard';
+
+const MainContainer = styled.div`
+    width: 1080px;
+    margin: 0 auto;
+    padding-top: 10px;
+`;
+const DataInfo = styled.div`
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: #1f334a;
+`;
+const Text = styled.p`
+    margin-top: 3px;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: 400;
+`;
+const Info = styled.div`
+    display: flex;
+`;
+const Dummy = styled.div`
+    height: 500px;
+    border: 1px solid black;
+    flex: 1;
+`;
+const RecordBox = styled.div`
+    flex: 2;
+`;
 
 const Home = () => {
     const [accessData, setAccessData] = useState('');
+    const data = useRecoilValue(Data);
     let nickname = 'BBEESSTT';
 
     // 닉네임 검색을 이용한 accessId 가져오기
@@ -35,24 +70,28 @@ const Home = () => {
     }, []);
 
     return (
-        <Container>
+        <MainContainer>
+            <DataInfo>
+                <i className="fa-solid fa-circle-info"></i>
+                <Text>
+                    {' '}
+                    카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수
+                    있습니다
+                </Text>
+            </DataInfo>
             <Profile accessData={accessData} />
             <h1>전적조회페이지</h1>
-            <Flex>
-                <DashBoard />
-                <CheerComment />
-            </Flex>
-        </Container>
+            <DashBoard />
+            <Info>
+                <Dummy />
+                <RecordBox>
+                    {data.map((data) => (
+                        <RecordCard data={data} />
+                    ))}
+                </RecordBox>
+            </Info>
+        </MainContainer>
     );
 };
 
 export default Home;
-
-const Container = styled.div`
-    width: 1080px;
-    margin: 0 auto;
-`;
-
-const Flex = styled.div`
-    display: flex;
-`;
