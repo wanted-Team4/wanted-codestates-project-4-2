@@ -91,9 +91,12 @@ const Home = () => {
             </Flex>
             <Info>
                 <Dummy />
-                <RecordBox>
-                    {data.map((data) => (
-                        <RecordCard data={data} />
+                <RecordBox >
+                    {data.map((data, idx) => (
+                        <RecordCard
+                            key={idx}
+                            data={data}
+                        />
                     ))}
                 </RecordBox>
             </Info>
