@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-import { Link, useNavigate, useLocation } from "react-router-dom"
-import { useRef } from "react";
+import styled from "styled-components";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = styled.nav`
   width: 100%;
@@ -33,9 +32,9 @@ const MenuContent = styled.div`
   height: 55px;
   box-sizing: border-box;
   width: 80px;
-  opacity: ${props => props.isExact ? 1 : 0.5};
-  transition: all .15s ease-in-out;
-  border-bottom: ${props => props.isExact ? '4px solid white' : 'none'};
+  opacity: ${(props) => (props.isExact ? 1 : 0.5)};
+  transition: all 0.15s ease-in-out;
+  border-bottom: ${(props) => (props.isExact ? "4px solid white" : "none")};
 
   &:after {
     width: 0px;
@@ -45,15 +44,15 @@ const MenuContent = styled.div`
     bottom: 0;
     margin: 0 auto;
     border-bottom: 4px solid white;
-    transition: all .15s ease-in-out;
- }
+    transition: all 0.15s ease-in-out;
+  }
 
   &:hover {
     opacity: 1;
     &:after {
       width: 80px;
     }
-  }  
+  }
 `;
 
 const Search = styled.form`
@@ -76,14 +75,15 @@ const SearchInput = styled.input`
   border: none;
   border-bottom: 1px solid #fff;
   opacity: 0.5;
-  transition: .3s ease;
+  transition: 0.3s ease;
   &::placeholder {
     color: white;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     opacity: 1;
   }
-`
+`;
 
 const SearchBtn = styled.button`
   border: none;
@@ -96,41 +96,38 @@ const SearchBtn = styled.button`
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const inputRef = useRef();
-
   const onSubmit = (e) => {
     e.preventDefault();
-    const value = inputRef.current.value
-    navigate('/');
-    console.log(value);
-  }
+    navigate(`/?nick=${e.target[0].value}`);
+  };
 
   return (
     <Navbar>
       <NavInner>
         <TabMenu>
           <Menu>
-
-            <MenuContent isExact={location.pathname === '/' ? 1 : 0}>
-              <Link to="/">홈</Link>
+            <MenuContent isExact={location.pathname === "/" ? 1 : 0}>
+              <Link to="/user">홈</Link>
             </MenuContent>
           </Menu>
           <Menu>
-
-            <MenuContent isExact={location.pathname === '/rank' ? 1 : 0}>
+            <MenuContent isExact={location.pathname === "/rank" ? 1 : 0}>
               <Link to="/rank">랭킹</Link>
             </MenuContent>
           </Menu>
         </TabMenu>
 
-        <Search>
-          <SearchInput type="text" placeholder="닉네임 검색" ref={inputRef} />
-          <SearchBtn type="submit" onClick={onSubmit}>
-            <i>🚝</i>
+        <Search onSubmit={onSubmit}>
+          <SearchInput type="text" placeholder="닉네임 검색" />
+          <SearchBtn type="submit">
+            <i
+              style={{ color: "white", cursor: "pointer" }}
+              class="fa fa-search"
+            ></i>
           </SearchBtn>
         </Search>
       </NavInner>
     </Navbar>
   );
-}
+};
 export default Header;

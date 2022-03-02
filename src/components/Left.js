@@ -110,7 +110,7 @@ const Left = ({ matchData }) => {
   const [selectTrackId, setSelectTrackId] = useState();
   const [winRate, setWinRate] = useState();
 
-  useEffect(() => { }, [selectCartId, selectTrackId]);
+  useEffect(() => {}, [selectCartId, selectTrackId]);
   const calcWinRate = () => {
     let count = 0;
     let win = 0;
@@ -145,14 +145,14 @@ const Left = ({ matchData }) => {
             ? trackList[match.trackId].bestRecord
             : trackList[match.trackId].bestRecord <
               Number(match.player.matchTime)
-              ? trackList[match.trackId].bestRecord
-              : Number(match.player.matchTime),
+            ? trackList[match.trackId].bestRecord
+            : Number(match.player.matchTime),
           trackRecord: Number(match.player.matchRetired)
             ? [...trackList[match.trackId].trackRecord]
             : [
-              ...trackList[match.trackId].trackRecord,
-              Number(match.player.matchTime),
-            ],
+                ...trackList[match.trackId].trackRecord,
+                Number(match.player.matchTime),
+              ],
         };
       } else {
         trackList[match.trackId] = {
@@ -196,12 +196,12 @@ const Left = ({ matchData }) => {
           trackRecord: Number(match.player.matchRetired)
             ? [...kartList[match.player.kart].trackRecord]
             : [
-              ...kartList[match.player.kart].trackRecord,
-              {
-                trackId: match.trackId,
-                record: Number(match.player.matchTime),
-              },
-            ],
+                ...kartList[match.player.kart].trackRecord,
+                {
+                  trackId: match.trackId,
+                  record: Number(match.player.matchTime),
+                },
+              ],
         };
       } else {
         kartList[match.player.kart] = {
@@ -211,11 +211,11 @@ const Left = ({ matchData }) => {
           trackRecord: Number(match.player.matchRetired)
             ? {}
             : [
-              {
-                trackId: match.trackId,
-                record: Number(match.player.matchTime),
-              },
-            ],
+                {
+                  trackId: match.trackId,
+                  record: Number(match.player.matchTime),
+                },
+              ],
         };
       }
     });
