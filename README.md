@@ -1,5 +1,21 @@
 # 🚗 wanted-codestates-project-4-2
 
+넥슨코리아 기업 과제
+
+### 📌 &nbsp;[Team4의 과제 확인하러 가기](https://team4-nexon-kartrider.netlify.app/)
+
+### <br/>
+
+###
+
+## 🚗 View
+| 개인 전적 조회 페이지 | 랭킹 페이지 |
+| :--------: | :------------: | 
+
+### <br/>
+
+###
+
 ## 🚗 Implement
 
 ### Stack
@@ -8,7 +24,11 @@
 
 ### Features
 
-#### 💡 팀 기업과제 3 : 넥슨히어로
+#### ✅ 개인 전적 조회, 랭킹 페이지
+
+#### ✅ 그래프
+
+#### ✅ 애니메이션
 
 ### <br/>
 
@@ -49,13 +69,7 @@ $ git clone "https://github.com/wanted-Team4/wanted-codestates-project-4-2.git"
 $ npm install
 ```
 
-3. `Setting` prettier,
-
-```
-$ npx prettier --write .
-```
-
-4. `start` the project,
+3. `start` the project,
 
 ```
 $ npm start
