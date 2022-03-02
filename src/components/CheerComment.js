@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+
+//전역으로 리코일에 저장
+const [commentList, setCommentList] = useRecoilState(commentList);
 
 //더미데이터
 const commentList = [
