@@ -22,6 +22,8 @@ const RankChangeTrend = () => {
     const recentGame = 2.72;
     const ranking = 1;
 
+
+    //playRank 더미데이터(순위변동)
     const data = [
         { round: 1, rank: 2 },
         { round: 2, rank: 5 },
@@ -83,7 +85,7 @@ const RankChangeTrend = () => {
             </TextContents>
             <ChartContents>
                 <LineChart
-                    width={400}
+                    width={300}
                     height={200}
                     data={data}
                     margin={{
@@ -112,7 +114,9 @@ const RankChangeTrend = () => {
 export default RankChangeTrend;
 
 const Container = styled.div`
-    width: 450px;
+    width: 360px;
+    padding: 0 10px;
+    box-sizing: border-box;
 `;
 
 const TextContents = styled.div`

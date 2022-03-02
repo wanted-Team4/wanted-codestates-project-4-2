@@ -85,8 +85,8 @@ const Home = () => {
             <Profile accessData={accessData} />
             <MatchBanner />
             <Flex>
-                <TotalRecord />
-                <RankChangeTrend />
+                <TotalRecord data={data} />
+                <RankChangeTrend data={data} />
                 <CheerComment />
             </Flex>
             <Info>
