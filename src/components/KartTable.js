@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import kartName from "../kart.json";
+import kartName from "../data/kart.json";
 
 const Warraper = styled.div`
   overflow-y: auto;
@@ -60,7 +60,7 @@ const KartTable = ({ kartData, selectCartId, setSelectCartId }) => {
                       marginRight: "10px",
                       verticalAlign: "middle",
                     }}
-                    src={require(`../kart/${kart[0]}.png`)}
+                    src={`${process.env.PUBLIC_URL}/metadata/kart/${kart[0]}.png`}
                   ></img>
                   {kartName.map((name) => {
                     if (name.id === kart[0]) return name.name;

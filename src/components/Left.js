@@ -4,8 +4,8 @@ import Kart from "./Kart";
 import KartTable from "./KartTable";
 import LeftGraph from "./LeftGraph";
 import LeftTable from "./LeftTable";
-import kartName from "../kart.json";
-import trackName from "../track.json";
+import kartName from "../data/kart.json";
+import trackName from "../data/track.json";
 
 const Warraper = styled.div`
   margin-right: 10px;

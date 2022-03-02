@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { isRecoilValue } from "recoil";
 import styled from "styled-components";
-import trackName from "../track.json";
+import trackName from "../data/track.json";
 
 const Warraper = styled.div`
   display: flex;
@@ -97,7 +96,7 @@ const Kart = ({ selectCartId, kartData }) => {
             marginRight: "10px",
             verticalAlign: "middle",
           }}
-          src={require(`../kart/${selectCartId}.png`)}
+          src={`${process.env.PUBLIC_URL}/metadata/kart/${selectCartId}.png`}
         ></img>
       </Thumnail>
       <Record>
