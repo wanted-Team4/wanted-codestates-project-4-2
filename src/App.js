@@ -1,18 +1,24 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './pages/Home';
-import Ranking from './pages/Ranking';
+import RankingEtc from './components/RankingEtcBox';
 import React from 'react';
+import Home from './pages/Home';
+import styled from 'styled-components';
+import Header from './components/Header';
 
 const App = () => {
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route exact path='/rank' element={<Ranking />} />
-                <Route exact path='/' element={<Home />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Header />
+      <MainContainer>
+        <Routes>
+          <Route exact path='/rank' element={<RankingEtc />} />
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+      </MainContainer>
+    </BrowserRouter>
+  );
 };
+
+const MainContainer = styled.main`
+`;
 export default App;

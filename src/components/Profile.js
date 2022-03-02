@@ -9,7 +9,7 @@ import ReportModal from './common/ReportModal';
 
 const ProfileContainer = styled.div`
     height: 175px;
-    width: 1000px;
+    width: 1100px;
     border-width: 1px 1px 1px 5px;
     border-style: solid;
     border-color: #f2f2f2 #f2f2f2 #f2f2f2 #07f;
@@ -19,6 +19,7 @@ const ProfileContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 `;
 const InfoBox = styled.div`
     display: flex;
@@ -127,7 +128,7 @@ const Profile = ({ accessData }) => {
                 headers: {
                     Authorization: process.env.REACT_APP_NEXON_KEY
                 }
-            )
+            })
             .then((res) => {
                 setIsCharacter(res.data.matches[0].matches[0].character);
                 setIsData(res.data.matches[0].matches);
