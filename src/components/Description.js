@@ -56,19 +56,6 @@ const Description = () => {
           최근 업데이트 2022년 03월 01일 09:22:51
         </div>
       </div>
-
-      <div className='description-button'>
-        <div className='button-left'>
-          <span className='divider'>개인전</span>
-          <span>팀전</span>
-        </div>
-
-        <div className='button-right'>
-          <span className='divider'>통합</span>
-          <span className='divider'>매빠</span>
-          <span>무부</span>
-        </div>
-      </div>
     </Container>
   );
 };
