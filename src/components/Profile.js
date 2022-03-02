@@ -108,7 +108,7 @@ const ViewCount = styled.p`
 `;
 
 const Profile = ({ accessData, data }) => {
-    const { name, level } = accessData;
+    const { accessId, name, level } = accessData;
     const isCharacter = data[0].player.character
 
     const [openShareModal, setOpenShareModal] = useState(false);
