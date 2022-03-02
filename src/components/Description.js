@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
+  width: 80%;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin-left: 12%;
+  flex-direction: column;
 
   .description-title {
     font-size: 25px;
@@ -48,19 +54,6 @@ const Description = () => {
         </div>
         <div className="description-sub">
           최근 업데이트 2022년 03월 01일 09:22:51
-        </div>
-      </div>
-
-      <div className="description-button">
-        <div className="button-left">
-          <span className="divider">개인전</span>
-          <span>팀전</span>
-        </div>
-
-        <div className="button-right">
-          <span className="divider">통합</span>
-          <span className="divider">매빠</span>
-          <span>무부</span>
         </div>
       </div>
     </Container>
