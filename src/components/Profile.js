@@ -108,7 +108,7 @@ const ViewCount = styled.p`
 `;
 
 const Profile = ({ accessData, data }) => {
-  const { accessId, name, level } = accessData;
+  const { name, level } = accessData;
   const isCharacter = data[0].player.character;
 
   const [openShareModal, setOpenShareModal] = useState(false);
@@ -149,7 +149,7 @@ const Profile = ({ accessData, data }) => {
                 <i className="fa-solid fa-share-nodes"></i> 공유하기
               </ShareBtn>
               {openShareModal ? (
-                <ShareModal shareModalHandler={shareModalHandler} />
+                <ShareModal shareModalHandler={shareModalHandler} name={name} />
               ) : null}
             </UserAction>
           </LinkBox>

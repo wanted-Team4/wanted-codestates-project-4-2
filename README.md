@@ -76,6 +76,12 @@ $ npm install
 $ npm start
 ```
 
+4. `Setting` prettier,
+
+```
+$ npx prettier --write .
+```
+
 ### Commit Emoji
 
 |   emoji    | commit message |       when to use it        |

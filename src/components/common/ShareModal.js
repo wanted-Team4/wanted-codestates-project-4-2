@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 160px;
   height: 150px;
   top: 260px;
-  left: 910px;
+  left: 870px;
   z-index: 1;
   background-color: #fff;
   border: 1px solid #e7e7e7;
@@ -44,18 +44,18 @@ const Text = styled.p`
 `;
 const Xmark = styled.div``;
 
-const ShareModal = ({ shareModalHandler }) => {
-  // const handleShareUrl = () => {
-  //     let dummy = document.createElement("input");
-  //     let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/:${review.id}`;
+const ShareModal = ({ shareModalHandler, name }) => {
+  const handleShareUrl = () => {
+    let dummy = document.createElement("input");
+    let text = `https://team4-nexon-kartrider.netlify.app/?nick=${name}`;
 
-  //     document.body.appendChild(dummy);
-  //     dummy.value = text;
-  //     dummy.select();
-  //     document.execCommand("copy");
-  //     document.body.removeChild(dummy);
-  //     dispatch(setMessageModal(true, `URL 복사 완료 🙌🏻`));
-  // };
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+    alert(`URL 복사 완료 🙌🏻`)
+  };
 
   return (
     <Container>
@@ -70,7 +70,7 @@ const ShareModal = ({ shareModalHandler }) => {
           <Icon src="img/icon_fb.svg" />
           <Text>페이스북</Text>
         </Facebook>
-        <Url>
+        <Url onClick={handleShareUrl}>
           <Icon src="img/icon_url.svg" />
           <Text>URL 복사</Text>
         </Url>

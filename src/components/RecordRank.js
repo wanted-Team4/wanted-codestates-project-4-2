@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const DetailsLi = styled.li`
   float: left;
-  width: 73.78px;
+  width: 80.6px;
   text-align: center;
 `;
 const CheckUser = styled.div`
