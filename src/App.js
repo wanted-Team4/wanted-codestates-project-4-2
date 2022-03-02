@@ -1,22 +1,18 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RankingEtc from './RankingEtc';
-import React from 'react';
+import Header from './components/Header';
 import Home from './pages/Home';
-import styled from 'styled-components';
-import DashBoard from './components/DashBoard';
+import Ranking from './pages/Ranking';
+import React from 'react';
 
 const App = () => {
     return (
         <BrowserRouter>
-            {/* 여기에 네비게이션 두시면 됩니다. */}
-            <MainContainer>
-                <Routes>
-                    <Route exact path='/rank' element={<RankingEtc />} />
-                    <Route exact path='/' element={<Home />} />
-                </Routes>
-            </MainContainer>
+            <Header />
+            <Routes>
+                <Route exact path='/rank' element={<Ranking />} />
+                <Route exact path='/' element={<Home />} />
+            </Routes>
         </BrowserRouter>
     );
 };
-const MainContainer = styled.main``;
 export default App;
