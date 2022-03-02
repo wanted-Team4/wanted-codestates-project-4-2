@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link, useNavigate, useLocation } from "react-router-dom"
+import { useRef } from "react";
 
 const Navbar = styled.nav`
   width: 100%;
@@ -95,11 +96,13 @@ const SearchBtn = styled.button`
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const inputRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate(`/user?nick=${e.target[0].value}`);
-    console.log(e);
+    const value = inputRef.current.value
+    navigate('/');
+    console.log(value);
   }
 
   return (
@@ -120,9 +123,9 @@ const Header = () => {
           </Menu>
         </TabMenu>
 
-        <Search onSubmit={onSubmit}>
-          <SearchInput type="text" placeholder="닉네임 검색" />
-          <SearchBtn type="submit">
+        <Search>
+          <SearchInput type="text" placeholder="닉네임 검색" ref={inputRef} />
+          <SearchBtn type="submit" onClick={onSubmit}>
             <i>🚝</i>
           </SearchBtn>
         </Search>

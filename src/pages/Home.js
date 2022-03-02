@@ -91,7 +91,7 @@ const Home = () => {
             </Flex>
             <Info>
                 <LeftBox>
-                    <Left matchData={data}></Left>
+                    {/* <Left matchData={data}></Left> */}
                 </LeftBox>
                 <RecordBox >
                     {data.map((data, idx) => (
