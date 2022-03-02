@@ -106,8 +106,10 @@ const Header = () => {
       <NavInner>
         <TabMenu>
           <Menu>
-            <MenuContent isExact={location.pathname === "/" ? 1 : 0}>
-              <Link to="/user">홈</Link>
+            <MenuContent
+              isExact={location.pathname === "/?nick=BBEESSTT" ? 1 : 0}
+            >
+              <Link to="/?nick=BBEESSTT">홈</Link>
             </MenuContent>
           </Menu>
           <Menu>
