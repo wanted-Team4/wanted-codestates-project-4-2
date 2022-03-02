@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil'
-import { Data } from "../atoms";
 import RecordDetails from './RecordDetails';
 
 const Container = styled.div`
@@ -80,27 +78,25 @@ const ToggleBtn = styled.button`
     }
 `
 
-const RecordCard = () => {
+const RecordCard = ({ data }) => {
+    const { endTime, playerCount, player } = data
     const [openList, setOpenList] = useState(false);
-    const data = useRecoilValue(Data);
 
     const recordListHandler = () => {
         setOpenList(!openList)
     }
 
-    console.log(data)
-
     return (
         <>
             <Container>
-                <DayTime>14시간 전</DayTime>
+                <DayTime>{endTime}</DayTime>
                 <Result>
-                    <UserRate>#2</UserRate>
-                    <Total>/8</Total>
+                    <UserRate>#{player.matchRank}</UserRate>
+                    <Total>/{playerCount}</Total>
                 </Result>
                 <Track>월드 이탈리아 피사의 사탑</Track>
                 <Kart>몬스터XLE</Kart>
-                <Time>2'13'63</Time>
+                <Time>{player.matchTime}</Time>
                 <ToggleBtn onClick={recordListHandler}><i className="fa-solid fa-caret-down"></i></ToggleBtn>
             </Container>
             {openList ? (

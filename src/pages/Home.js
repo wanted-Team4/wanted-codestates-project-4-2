@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useRecoilValue } from 'recoil'
+import { Data } from "../atoms";
 import Profile from "../components/Profile";
 import DashBoard from '../components/DashBoard';
 import RecordCard from "../components/RecordCard";
@@ -37,6 +39,7 @@ const RecordBox = styled.div`
 
 const Home = () => {
     const [accessData, setAccessData] = useState('');
+    const data = useRecoilValue(Data);
     let nickname = 'BBEESSTT';
 
     // 닉네임 검색을 이용한 accessId 가져오기
@@ -60,6 +63,7 @@ const Home = () => {
     }, [])
 
     console.log(accessData)
+    console.log(data)
 
     return (
         <MainContainer>
@@ -73,7 +77,9 @@ const Home = () => {
             <Info>
                 <Dummy />
                 <RecordBox >
-                    <RecordCard />
+                    {data.map((data) => (
+                        <RecordCard data={data} />
+                    ))}
                 </RecordBox>
             </Info>
         </MainContainer>

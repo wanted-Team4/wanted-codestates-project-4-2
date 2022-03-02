@@ -27,15 +27,15 @@ const Time = styled.p`
     line-height: 42px;
 `
 
-const RecordRank = ({ dummy }) => {
+const RecordRank = ({ data }) => {
     return (
         <DetailsLi>
-            <Rank>{dummy.rank}</Rank>
+            <Rank>{data.rank}</Rank>
             <Kart>
-                <KartImg src={dummy.kart} />
+                <KartImg src={data.kart} />
             </Kart>
-            <User>{dummy.user}</User>
-            <Time>{dummy.time}</Time>
+            <User>{data.user}</User>
+            <Time>{data.time}</Time>
         </DetailsLi>
     );
 }

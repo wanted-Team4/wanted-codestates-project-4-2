@@ -105,10 +105,10 @@ const RecordDetails = () => {
                     <Time>기록</Time>
                 </DetailsLi>
                 {
-                    dummy.map((el, idx) => (
+                    dummy.map((data, idx) => (
                         <RecordRank
                             key={idx}
-                            dummy={el}
+                            data={data}
                         />
                     ))
                 }
