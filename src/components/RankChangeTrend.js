@@ -42,15 +42,15 @@ const RankChangeTrend = ({ data }) => {
         { rank: 8 },
     ];
 
-    let chartArr = [];
-    for (let i = 0; i < 20; i++) {
-        // chartArr.push({ rank: data[i].player.matchRank });
-        // chartArr = data[i].player.matchRank;
-        return chartArr;
-    }
+    // let chartArr = [];
+    // for (let i = 0; i < 20; i++) {
+    // chartArr.push({ rank: data[i].player.matchRank });
+    // chartArr = data[i].player.matchRank;
+    // return chartArr;
+    // }
     // console.log(chartArr);
 
-    console.log('>>', chartArr);
+    // console.log('>>', chartArr);
     //data를 아래처럼 가공해서 array에 넣어준다.
     //이런 형식으로 어떻게 가공하지
     // let rank = data.map((item) => item.player.matchRank);
