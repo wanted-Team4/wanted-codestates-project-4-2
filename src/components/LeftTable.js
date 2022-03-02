@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import trackName from "../track.json";
-//const trackName = process.env.PUBLIC_URL;
+
 const Warraper = styled.div`
   overflow-y: auto;
   height: 235px;
@@ -19,13 +20,14 @@ const TrackTable = styled.table`
 const TableThead = styled.thead``;
 const TableTr = styled.tr`
   box-sizing: border-box;
+  border: ${(props) => (props.active ? "1px solid #07f" : "none")};
 `;
 const TableTd = styled.td`
   box-sizing: border-box;
 `;
 const TableTh = styled.th``;
 const TableBody = styled.tbody``;
-const LeftTable = ({ trackData }) => {
+const LeftTable = ({ trackData, setSelectTrackId, selectTrackId }) => {
   const matchTimeTimeExtractor = (matchTime) => {
     const min = String(parseInt(matchTime / 1000 / 60)); // 분을 구한다.
 
@@ -46,6 +48,10 @@ const LeftTable = ({ trackData }) => {
     return secondDot.join("'"); // 조인을 통해 기록시간 형태로 만들어준다.
   };
 
+  const onChange = (trackId) => {
+    setSelectTrackId(trackId);
+  };
+
   return (
     <Warraper>
       <TrackTable>
@@ -59,13 +65,25 @@ const LeftTable = ({ trackData }) => {
         {trackData ? (
           <TableBody>
             {trackData.map((track) => (
-              <TableTr>
+              <TableTr key={track[0]} active={track[0] === selectTrackId}>
                 <TableTd>
-                  <input type="radio"></input>
+                  <input
+                    onChange={() => onChange(track[0])}
+                    type="radio"
+                    checked={track[0] === selectTrackId}
+                  ></input>
                 </TableTd>
                 <TableTd style={{ textAlign: "left", paddingLeft: "10px" }}>
+                  <img
+                    style={{
+                      height: "27px",
+                      paddingRight: "10px",
+                      verticalAlign: "middle",
+                    }}
+                    src="https://s3-ap-northeast-1.amazonaws.com/solution-userstats/kartimg/Category/unknown_1.png"
+                  />
                   {trackName.map((name) => {
-                    if (name.id === track[0]) return name.name;
+                    if (name.id === track[0]) return name.name.slice(0, 10);
                   })}
                 </TableTd>
                 <TableTd>{track[1].count}</TableTd>
@@ -75,8 +93,8 @@ const LeftTable = ({ trackData }) => {
                     : "-"}
                 </TableTd>
                 <TableTd>
-                  {track[1].trackRecord && track[1].trackRecord !== 999999
-                    ? matchTimeTimeExtractor(track[1].trackRecord)
+                  {track[1].bestRecord && track[1].bestRecord !== 999999
+                    ? matchTimeTimeExtractor(track[1].bestRecord)
                     : "-"}
                 </TableTd>
               </TableTr>
