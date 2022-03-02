@@ -19,5 +19,6 @@ const App = () => {
     </BrowserRouter>
   );
 };
-const MainContainer = styled.main``;
+const MainContainer = styled.main`
+`;
 export default App;
