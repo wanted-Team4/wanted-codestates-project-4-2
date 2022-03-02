@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const RankingEtc = () => {
   const data = [
-    { id: 1, rank: '1', nink: 'b', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 2, rank: '2', nink: 'c', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 3, rank: '3', nink: 'd', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 4, rank: '4', nink: 'v', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 5, rank: '5', nink: 'n', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 6, rank: '6', nink: 'e', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 7, rank: '7', nink: 'q', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 8, rank: '8', nink: 't', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 9, rank: '9', nink: 'y', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 1, rank: "1", nink: "b", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 2, rank: "2", nink: "c", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 3, rank: "3", nink: "d", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 4, rank: "4", nink: "v", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 5, rank: "5", nink: "n", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 6, rank: "6", nink: "e", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 7, rank: "7", nink: "q", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 8, rank: "8", nink: "t", pts: "1", dri: "1", rankAvg: "4" },
+    { id: 9, rank: "9", nink: "y", pts: "1", dri: "1", rankAvg: "4" },
   ];
 
   //4위부터 뿌려줄 컴포넌트 데이터
@@ -24,9 +25,9 @@ const RankingEtc = () => {
         <EtcContents>
           <EtcRank>{item.rank}</EtcRank>
           <EtcNick>{item.nink}</EtcNick>
-          <EtcPts>{item.pts}포인트</EtcPts>
-          <EtcDriving>{item.dri}횟수</EtcDriving>
-          <EtcSpanRank>{item.rankAvg}순위</EtcSpanRank>
+          <EtcPts>{item.pts}PT</EtcPts>
+          <EtcDriving>{item.dri}회</EtcDriving>
+          <EtcSpanRank>{item.rankAvg}위</EtcSpanRank>
         </EtcContents>
       </EtcSub>
     );
@@ -73,6 +74,10 @@ const EtcContents = styled.div`
   height: 40px;
   background-color: #fff;
   border: 1px solid #f2f2f2;
+  &:hover {
+    border: 2px solid #0077ff;
+    color: #0077ff;
+  }
 `;
 
 // div 안에 span 태그 모음

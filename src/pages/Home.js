@@ -42,25 +42,25 @@ const Home = () => {
     const data = useRecoilValue(Data);
     let nickname = 'BBEESSTT';
 
-    // 닉네임 검색을 이용한 accessId 가져오기
-    const getUserId = (nickname) => {
-        axios.get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`,
-            {
-                headers: {
-                    Authorization: process.env.REACT_APP_NEXON_KEY
-                }
-            })
-            .then((res) => {
-                setAccessData(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+  // 닉네임 검색을 이용한 accessId 가져오기
+  const getUserId = (nickname) => {
+    axios
+      .get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`, {
+        headers: {
+          Authorization: process.env.REACT_APP_NEXON_KEY,
+        },
+      })
+      .then((res) => {
+        setAccessData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    useEffect(() => {
-        getUserId(nickname)
-    }, [])
+  useEffect(() => {
+    getUserId(nickname);
+  }, []);
 
     console.log(accessData)
     console.log(data)
