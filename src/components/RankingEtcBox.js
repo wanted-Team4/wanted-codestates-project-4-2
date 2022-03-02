@@ -3,11 +3,25 @@ import styled from 'styled-components';
 
 const RankingEtc = () => {
   const data = [
-    { id: 1, rank: '1', nink: 'b', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 2, rank: '2', nink: 'c', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 3, rank: '3', nink: 'd', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 4, rank: '4', nink: 'v', pts: '1', dri: '1', rankAvg: '4' },
-    { id: 5, rank: '5', nink: 'n', pts: '1', dri: '1', rankAvg: '4' },
+    {
+      id: 1,
+      rank: '1',
+      nink: 'ㅇ',
+      pts: '1',
+      dri: '1',
+      rankAvg: '4',
+    },
+    { id: 2, rank: '2', nink: '넥슨조아요', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 3, rank: '3', nink: '넥슨싫어요', pts: '1', dri: '1', rankAvg: '4' },
+    { id: 4, rank: '4', nink: '기업과제', pts: '1', dri: '1', rankAvg: '4' },
+    {
+      id: 5,
+      rank: '5',
+      nink: '베이비컬렉션',
+      pts: '1',
+      dri: '1',
+      rankAvg: '4',
+    },
     { id: 6, rank: '6', nink: 'e', pts: '1', dri: '1', rankAvg: '4' },
     { id: 7, rank: '7', nink: 'q', pts: '1', dri: '1', rankAvg: '4' },
     { id: 8, rank: '8', nink: 't', pts: '1', dri: '1', rankAvg: '4' },
@@ -38,10 +52,10 @@ const RankingEtc = () => {
       <EtcSub>
         <EtcNavContents>
           <EtcRank>#</EtcRank>
-          <EtcNick>닉네임(순위변동)</EtcNick>
-          <EtcPts>누적포인트 (전일대비)</EtcPts>
-          <EtcDriving>주행횟수</EtcDriving>
-          <EtcSpanRank>평균순위</EtcSpanRank>
+          <EtcNick>닉네임</EtcNick>
+          <EtcPts>누적포인트</EtcPts>
+          <EtcDriving>주행</EtcDriving>
+          <EtcSpanRank>순위</EtcSpanRank>
         </EtcNavContents>
       </EtcSub>
       {rankData}
@@ -56,6 +70,9 @@ const EtcMian = styled.ul`
   margin: 0 auto;
   width: 80%;
   /* top: -40px; */
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 const EtcSub = styled.li`
   //  ul안에 바로 li 태그
@@ -68,7 +85,8 @@ const EtcNavContents = styled.div`
   color: blue;
   font-weight: 500;
   font-size: 12px;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #dbd9d9;
+  justify-content: space-between;
 `;
 const EtcContents = styled.div`
   // li안에 div 태그
@@ -79,31 +97,39 @@ const EtcContents = styled.div`
   background-color: #fff;
   border: 1px solid #f2f2f2;
   margin: 10px 0px;
+  justify-content: space-between;
   &:hover {
     border: 2px solid #0077ff;
     color: #0077ff;
   }
 `;
 
-// div 안에 span 태그 모음
-const EtcRank = styled.span``;
-const EtcNick = styled.span`
+// div 안에 내용 모음
+const EtcRank = styled.div`
   position: absolute;
-  left: 220px;
+  left: 6vw;
+  width: 10vw;
 `;
-const EtcPts = styled.span`
+const EtcNick = styled.div`
+  position: absolute;
+  left: 20vw;
+  width: 30vw;
+`;
+const EtcPts = styled.div`
   display: inline-block;
-
   position: absolute;
-  right: 260px;
+  right: 10vw;
+  width: 28vw;
 `;
-const EtcDriving = styled.span`
+const EtcDriving = styled.div`
   position: absolute;
-  right: 140px;
+  right: 7vw;
+  width: 15vw;
 `;
-const EtcSpanRank = styled.span`
+const EtcSpanRank = styled.div`
   position: absolute;
-  right: 60px;
+  right: 1vw;
+  width: 10vw;
 `;
 
 export default RankingEtc;
