@@ -6,5 +6,5 @@ export const Data = atom({
 });
 export const SearchName = atom({
   key: "name",
-  default: '',
+  default: "",
 });
