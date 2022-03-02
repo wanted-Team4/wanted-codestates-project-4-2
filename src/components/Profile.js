@@ -123,7 +123,7 @@ const Profile = ({ accessData }) => {
         setOpenReportModal(!openReportModal)
     }
 
-    const getMatchData = ({ accessId }) => {
+    const getMatchData = (accessId) => {
         axios.get(`https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
             {
                 headers: {
@@ -142,11 +142,8 @@ const Profile = ({ accessData }) => {
     const characterImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${isCharacter}.png`;
 
     useEffect(() => {
-        getMatchData({ accessId })
-    }, [])
-
-    console.log(isCharacter)
-    console.log(isData)
+        getMatchData(accessId)
+    }, [accessId])
 
     return (
         <ProfileContainer>

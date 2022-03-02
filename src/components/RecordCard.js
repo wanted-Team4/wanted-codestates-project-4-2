@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RecordDetails from './RecordDetails';
+import trackData from "../data/flyingPet.json";
 
 const Container = styled.div`
     width: 100%;
@@ -19,6 +20,14 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    &.blue{
+        background-color: rgba(0,119,255,.05);
+        border-color: #f2f2f2 #f2f2f2 #f2f2f2 #07f;
+    }
+    &.red{
+        background-color: rgba(246,36,89,.05);
+        border-color: #f2f2f2 #f2f2f2 #f2f2f2 #f62459;
+    }
 `
 const DayTime = styled.p`
     color: #1f334a;
@@ -31,18 +40,31 @@ const Result = styled.div`
     align-items: end;
     width: 140px;
     font-style: italic;
-    opacity: .5;
 `
 const UserRate = styled.p`
     font-size: 30px;
     font-weight: 500;
     color: #1f334a;
+    opacity: .5;
+    &.blue{
+        color: #07f;
+        opacity: 1;
+    }
+    &.red{
+        color: #f62459;
+        opacity: 1;
+    }
 `
 const Total = styled.p`
     font-size: 16px;
     margin-left: 5px;
     font-weight: 500;
     margin-bottom: 4px;
+    opacity: .5;
+    &.blue{
+        color: #07f;
+        opacity: 1;
+    }
 `
 const Track = styled.p`
     width: 160px;
@@ -50,7 +72,7 @@ const Track = styled.p`
     font-weight: 400;
     text-align: center;
 `
-const Kart = styled.p`
+const Kart = styled.div`
     color: #1f334a;
     font-weight: 400;
     text-align: center;
@@ -73,6 +95,28 @@ const ToggleBtn = styled.button`
     background-color: #fff;
     color: #a1a1a1;
     font-size: 16px;
+    &.blue{
+        opacity: .3;
+        background-color: rgba(0,119,255,.05);
+        border-left: 1px solid #B2B1B9;
+        color: #444444;
+    }
+    &.blue:hover{
+        background-color: rgba(0,119,255,.05);
+        opacity: 1;
+        border-left: 1px solid #ebebeb;
+    }
+    &.red{
+        opacity: .3;
+        background-color: rgba(246,36,89,.05);
+        border-left: 1px solid #B2B1B9;
+        color: #444444;
+    }
+    &.red:hover{
+        background-color: rgba(246,36,89,.07);
+        opacity: 1;
+        border-left: 1px solid #ebebeb;
+    }
     :hover {
         background: #ebebeb;
     }
@@ -86,19 +130,76 @@ const RecordCard = ({ data }) => {
         setOpenList(!openList)
     }
 
+    // const matchTrack = trackData.filter((el) => el.id === player.flyingPet)
+    // const matchName = matchTrack[0]['name']
+    // console.log(matchTrack)
+    // console.log(matchName)
+
+    console.log(Object.keys(trackData));
+
+    const timeForToday = (time) => {
+        const today = new Date();
+        const timeValue = new Date(time);
+
+        const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+        if (betweenTime < 1) return '방금 전';
+        if (betweenTime < 60) {
+            return `${betweenTime}분 전`;
+        }
+
+        const betweenTimeHour = Math.floor(betweenTime / 60);
+        if (betweenTimeHour < 24) {
+            return `${betweenTimeHour}시간 전`;
+        }
+
+        const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+        if (betweenTimeDay < 365) {
+            return `${betweenTimeDay}일 전`;
+        }
+
+        return `${Math.floor(betweenTimeDay / 365)}년 전`;
+    }
+
+    const addComma = (countTime) => {
+        return countTime.replace(/\B(?<!\.\d*)(?=(\d{2})+(?!\d))/g, "'")
+    }
+
+    useEffect(() => {
+        timeForToday(endTime)
+        addComma(player.matchTime)
+    }, [])
+
     return (
         <>
-            <Container>
-                <DayTime>{endTime}</DayTime>
-                <Result>
-                    <UserRate>#{player.matchRank}</UserRate>
-                    <Total>/{playerCount}</Total>
-                </Result>
-                <Track>월드 이탈리아 피사의 사탑</Track>
-                <Kart>몬스터XLE</Kart>
-                <Time>{player.matchTime}</Time>
-                <ToggleBtn onClick={recordListHandler}><i className="fa-solid fa-caret-down"></i></ToggleBtn>
-            </Container>
+            {player.matchTime === '' ? (
+                <>
+                    <Container className="red">
+                        <DayTime>{timeForToday(endTime)}</DayTime>
+                        <Result>
+                            <UserRate className="red">#리타이어</UserRate>
+                        </Result>
+                        <Track>월드 이탈리아 피사의 사탑</Track>
+                        <Kart>ㅎㅎ</Kart>
+                        <Time>{player.matchTime ? addComma(player.matchTime) : '-'}</Time>
+                        <ToggleBtn
+                            className="red"
+                            onClick={recordListHandler}><i className="fa-solid fa-caret-down"></i></ToggleBtn>
+                    </Container>
+                </>) :
+                (<Container className={`${player.matchRank}` === '1' ? "blue" : null}>
+                    <DayTime>{timeForToday(endTime)}</DayTime>
+                    <Result>
+                        <UserRate className={`${player.matchRank}` === '1' ? "blue" : null}>#{player.matchRank}</UserRate>
+                        <Total className={`${player.matchRank}` === '1' ? "blue" : null}>/{playerCount}</Total>
+                    </Result>
+                    <Track>월드 이탈리아 피사의 사탑</Track>
+                    <Kart>ㅎㅎ</Kart>
+                    <Time>{player.matchTime ? addComma(player.matchTime) : '-'}</Time>
+                    <ToggleBtn
+                        className={`${player.matchRank}` === '1' ? "blue" : null}
+                        onClick={recordListHandler}><i className="fa-solid fa-caret-down"></i></ToggleBtn>
+                </Container>
+                )}
             {openList ? (
                 <RecordDetails />) : null}
         </>
