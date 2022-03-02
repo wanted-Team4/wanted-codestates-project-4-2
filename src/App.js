@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RankingEtc from './components/RankingEtcBox';
+import Ranking from './pages/Ranking';
 import React from 'react';
 import Home from './pages/Home';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ const App = () => {
       <Header />
       <MainContainer>
         <Routes>
-          <Route exact path='/rank' element={<RankingEtc />} />
+          <Route exact path='/rank' element={<Ranking />} />
           <Route exact path='/' element={<Home />} />
         </Routes>
       </MainContainer>
@@ -19,6 +19,5 @@ const App = () => {
   );
 };
 
-const MainContainer = styled.main`
-`;
+const MainContainer = styled.main``;
 export default App;
