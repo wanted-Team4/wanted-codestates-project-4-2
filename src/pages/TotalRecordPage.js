@@ -1,12 +1,12 @@
-import React from 'react';
-import DashBoard from '../components/DashBoard';
+import React from "react";
+import DashBoard from "../components/DashBoard";
 
 const TotalRecordPage = () => {
-    return (
-        <>
-            <DashBoard />
-        </>
-    );
+  return (
+    <>
+      <DashBoard />
+    </>
+  );
 };
 
 export default TotalRecordPage;
