@@ -72,7 +72,7 @@ const ModalContainer = styled.div`
     height: 100vh;
 
     .modal {
-        z-index:5
+        z-index:5;
         color: black;
         background:pink
     }

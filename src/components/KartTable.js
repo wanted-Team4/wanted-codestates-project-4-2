@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import kartName from "../data/kart.json";
 
@@ -70,8 +69,8 @@ const KartTable = ({ kartData, selectCartId, setSelectCartId }) => {
                 <TableTd>
                   {kart[1].win
                     ? Math.floor(
-                        (kart[1].win / (kart[1].count - kart[1].retired)) * 100
-                      ) + "%"
+                      (kart[1].win / (kart[1].count - kart[1].retired)) * 100
+                    ) + "%"
                     : "-"}
                 </TableTd>
                 <TableTd>

@@ -142,7 +142,6 @@ const TextContents = styled.div`
     padding: 10px;
     font-size: 15px;
     font-weight: 500;
-  }
   .small {
     font-size: 12px;
     font-weight: 500;
