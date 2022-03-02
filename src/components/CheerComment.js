@@ -12,6 +12,10 @@ let newCommentList = [...commentList];
 let today = new Date();
 today = today.toISOString().slice(0, 10);
 
+//응원코멘트 스크롤 최신부분으로 자동이동
+// let scrollComment = document.querySelector(".commentBoard");
+// scrollComment.scrollTop = scrollComment.scrollHeight;
+
 const CheerComment = () => {
   //응원코멘트 상태
   //onChange 이벤트와 e.target.value를 통해 댓글과 닉네임을 input창에 입력할떄 상태값을 변경시켜주기
@@ -48,13 +52,15 @@ const CheerComment = () => {
       </TextContent>
 
       <CommentBox>
-        {newCommentList.map((el, i) => (
-          <div className="commentBoard" key={i}>
-            <div className="blue">{el.nickname}</div>
-            <div className="bubble">{el.contents}</div>
-            {/* 코멘트를 보여줍니다. 닉네임 : 내용 */}
-          </div>
-        ))}
+        <div className="commentBoardBox">
+          {newCommentList.map((el, i) => (
+            <div className="commentBoard" key={i}>
+              <div className="blue">{el.nickname}</div>
+              <div className="bubble">{el.contents}</div>
+              {/* 코멘트를 보여줍니다. 닉네임 : 내용 */}
+            </div>
+          ))}
+        </div>
         <div className="commentWrite">
           <input
             className="nick"
@@ -123,11 +129,17 @@ const CommentBox = styled.div`
     width: 100%;
     border-top: 1px solid #999;
     box-sizing: board-box;
+    
+    .commentBoardBox{
+        height:130px;
+        overflow:auto;
+    
 
     .commentBoard {
         display: flex;
         padding: 10px;
         box-sizing: board-box;
+    
 
         .blue {
             width:25%;
@@ -142,6 +154,7 @@ const CommentBox = styled.div`
             flex-grow: 3;
         }
     }
+  }
 
     .commentWrite {
         display: flex;
