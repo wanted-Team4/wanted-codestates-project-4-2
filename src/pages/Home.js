@@ -45,82 +45,82 @@ const Flex = styled.div`
 `;
 
 const Home = () => {
-  const [accessData, setAccessData] = useState();
-  const [data, setIsData] = useState();
-  let nickname = "BBEESSTT";
+    const [accessData, setAccessData] = useState();
+    const [data, setIsData] = useState();
+    let nickname = "BBEESSTT";
 
-  // 닉네임 검색을 이용한 accessId 가져오기
-  const getUserId = (nickname) => {
-    axios
-      .get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`, {
-        headers: {
-          Authorization: process.env.REACT_APP_NEXON_KEY,
-        },
-      })
-      .then((res) => {
-        setAccessData(res.data);
-        getMatchData(res.data.accessId);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    // 닉네임 검색을 이용한 accessId 가져오기
+    const getUserId = (nickname) => {
+        axios
+            .get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`, {
+                headers: {
+                    Authorization: process.env.REACT_APP_NEXON_KEY,
+                },
+            })
+            .then((res) => {
+                setAccessData(res.data);
+                getMatchData(res.data.accessId);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
-  const getMatchData = (accessId) => {
-    axios
-      .get(
-        `https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_NEXON_KEY,
-          },
-        }
-      )
-      .then((res) => {
-        setIsData(res.data.matches[0].matches);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const getMatchData = (accessId) => {
+        axios
+            .get(
+                `https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
+                {
+                    headers: {
+                        Authorization: process.env.REACT_APP_NEXON_KEY,
+                    },
+                }
+            )
+            .then((res) => {
+                setIsData(res.data.matches[0].matches);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
-  useEffect(() => {
-    getUserId(nickname);
-  }, []);
+    useEffect(() => {
+        getUserId(nickname);
+    }, []);
 
-  return (
-    <MainContainer>
-      <DataInfo>
-        <i className="fa-solid fa-circle-info"></i>
-        <Text>
-          {" "}
-          카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
-        </Text>
-      </DataInfo>
+    return (
+        <MainContainer>
+            <DataInfo>
+                <i className="fa-solid fa-circle-info"></i>
+                <Text>
+                    {" "}
+                    카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
+                </Text>
+            </DataInfo>
 
-      {data && accessData ? (
-        <>
-          <Profile accessData={accessData} />
-          <MatchBanner />
-          <Flex>
-            <TotalRecord data={data} />
-            <RankChangeTrend data={data} />
-            <CheerComment />
-          </Flex>
-          <Info>
-            <LeftBox>
-              <Left matchData={data}></Left>
-            </LeftBox>
-            <RecordBox>
-              {data.map((data, idx) => (
-                <RecordCard key={idx} data={data} />
-              ))}
-            </RecordBox>
-          </Info>
-        </>
-      ) : null}
-    </MainContainer>
-  );
+            {data && accessData ? (
+                <>
+                    <Profile accessData={accessData} data={data} />
+                    <MatchBanner />
+                    <Flex>
+                        <TotalRecord data={data} />
+                        <RankChangeTrend data={data} />
+                        <CheerComment />
+                    </Flex>
+                    <Info>
+                        <LeftBox>
+                            <Left matchData={data}></Left>
+                        </LeftBox>
+                        <RecordBox>
+                            {data.map((data, idx) => (
+                                <RecordCard key={idx} data={data} />
+                            ))}
+                        </RecordBox>
+                    </Info>
+                </>
+            ) : null}
+        </MainContainer>
+    );
 };
 
 export default Home;
