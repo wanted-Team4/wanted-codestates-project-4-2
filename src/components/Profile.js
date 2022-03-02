@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useRecoilState } from 'recoil';
+import { Data } from "../atoms";
 import Selector from "./common/Selector"
 import ShareModal from "./common/ShareModal";
 import ReportModal from "./common/ReportModal";
@@ -108,7 +110,8 @@ const ViewCount = styled.p`
 
 const Profile = ({ accessData }) => {
     const { accessId, name, level } = accessData;
-    const [isCharacter, setIsCharacter] = useState('')
+    const [isCharacter, setIsCharacter] = useState('');
+    const [isData, setIsData] = useRecoilState(Data);
     const [openShareModal, setOpenShareModal] = useState(false);
     const [openReportModal, setOpenReportModal] = useState(false);
 
@@ -121,7 +124,7 @@ const Profile = ({ accessData }) => {
     }
 
     const getMatchData = ({ accessId }) => {
-        axios.get(`https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=10&match_types=`,
+        axios.get(`https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
             {
                 headers: {
                     Authorization: process.env.REACT_APP_NEXON_KEY
@@ -129,6 +132,7 @@ const Profile = ({ accessData }) => {
             })
             .then((res) => {
                 setIsCharacter(res.data.matches[0].matches[0].character);
+                setIsData(res.data.matches[0].matches);
             })
             .catch((err) => {
                 console.log(err);
@@ -142,6 +146,7 @@ const Profile = ({ accessData }) => {
     }, [])
 
     console.log(isCharacter)
+    console.log(isData)
 
     return (
         <ProfileContainer>

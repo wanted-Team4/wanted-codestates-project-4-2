@@ -59,6 +59,8 @@ const Home = () => {
         getUserId(nickname)
     }, [])
 
+    console.log(accessData)
+
     return (
         <MainContainer>
             <DataInfo>

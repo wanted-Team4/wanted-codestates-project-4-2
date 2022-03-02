@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil'
+import { Data } from "../atoms";
 import RecordDetails from './RecordDetails';
 
 const Container = styled.div`
@@ -80,10 +82,13 @@ const ToggleBtn = styled.button`
 
 const RecordCard = () => {
     const [openList, setOpenList] = useState(false);
+    const data = useRecoilValue(Data);
 
     const recordListHandler = () => {
         setOpenList(!openList)
     }
+
+    console.log(data)
 
     return (
         <>
