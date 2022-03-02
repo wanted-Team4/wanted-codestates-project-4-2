@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import RecordRank from './RecordRank';
 
@@ -94,7 +96,31 @@ const dummy = [
     }
 ]
 
-const RecordDetails = () => {
+const RecordDetails = ({ matchId }) => {
+    const [players, setPlayers] = useState([])
+    console.log()
+
+    const getPlayersData = (matchId) => {
+        axios.get(`https://api.nexon.co.kr/kart/v1.0/matches/${matchId}`,
+            {
+                headers: {
+                    Authorization: process.env.REACT_APP_NEXON_KEY
+                }
+            })
+            .then((res) => {
+                setPlayers(res.data.players);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    console.log(players)
+
+    useEffect(() => {
+        getPlayersData(matchId)
+    }, [])
+
     return (
         <Container>
             <DetailsUl>
@@ -105,7 +131,7 @@ const RecordDetails = () => {
                     <Time>기록</Time>
                 </DetailsLi>
                 {
-                    dummy.map((data, idx) => (
+                    players.map((data, idx) => (
                         <RecordRank
                             key={idx}
                             data={data}

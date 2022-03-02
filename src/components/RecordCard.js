@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RecordDetails from './RecordDetails';
-import trackData from "../data/flyingPet.json";
+import trackData from "../data/track.json";
+import kartData from "../data/kart.json";
 
 const Container = styled.div`
     width: 100%;
@@ -123,26 +124,22 @@ const ToggleBtn = styled.button`
 `
 
 const RecordCard = ({ data }) => {
-    const { endTime, playerCount, player } = data
+    console.log(data)
+    const { endTime, playerCount, player, trackId, matchId } = data
     const [openList, setOpenList] = useState(false);
 
     const recordListHandler = () => {
         setOpenList(!openList)
     }
 
-    // const matchTrack = trackData.filter((el) => el.id === player.flyingPet)
-    // const matchName = matchTrack[0]['name']
-    // console.log(matchTrack)
-    // console.log(matchName)
-
-    console.log(Object.keys(trackData));
+    const matchKart = kartData.filter((el) => el.id === player.kart && el.name)
+    const matchTrack = trackData.filter((el) => el.id === trackId && el.name)
 
     const timeForToday = (time) => {
         const today = new Date();
         const timeValue = new Date(time);
 
         const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-        if (betweenTime < 1) return '방금 전';
         if (betweenTime < 60) {
             return `${betweenTime}분 전`;
         }
@@ -178,8 +175,8 @@ const RecordCard = ({ data }) => {
                         <Result>
                             <UserRate className="red">#리타이어</UserRate>
                         </Result>
-                        <Track>월드 이탈리아 피사의 사탑</Track>
-                        <Kart>ㅎㅎ</Kart>
+                        <Track>{matchTrack[0].name}</Track>
+                        <Kart>{matchKart[0].name}</Kart>
                         <Time>{player.matchTime ? addComma(player.matchTime) : '-'}</Time>
                         <ToggleBtn
                             className="red"
@@ -192,8 +189,8 @@ const RecordCard = ({ data }) => {
                         <UserRate className={`${player.matchRank}` === '1' ? "blue" : null}>#{player.matchRank}</UserRate>
                         <Total className={`${player.matchRank}` === '1' ? "blue" : null}>/{playerCount}</Total>
                     </Result>
-                    <Track>월드 이탈리아 피사의 사탑</Track>
-                    <Kart>ㅎㅎ</Kart>
+                    <Track>{matchTrack[0].name}</Track>
+                    <Kart>{matchKart[0].name}</Kart>
                     <Time>{player.matchTime ? addComma(player.matchTime) : '-'}</Time>
                     <ToggleBtn
                         className={`${player.matchRank}` === '1' ? "blue" : null}
@@ -201,7 +198,7 @@ const RecordCard = ({ data }) => {
                 </Container>
                 )}
             {openList ? (
-                <RecordDetails />) : null}
+                <RecordDetails matchId={matchId} />) : null}
         </>
     );
 }

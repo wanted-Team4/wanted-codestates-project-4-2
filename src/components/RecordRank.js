@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const DetailsLi = styled.li`
@@ -27,15 +28,25 @@ const Time = styled.p`
     line-height: 42px;
 `
 
-const RecordRank = ({ data }) => {
+const RecordRank = ({ data, idx }) => {
+    const { matchRank, characterName, matchTime } = data
+
+    const addComma = (matchTime) => {
+        return matchTime.replace(/\B(?<!\.\d*)(?=(\d{2})+(?!\d))/g, "'")
+    }
+
+    useEffect(() => {
+        addComma(matchTime)
+    }, [])
+
     return (
         <DetailsLi>
-            <Rank>{data.rank}</Rank>
+            <Rank>{!matchTime ? '리타이어' : matchRank}</Rank>
             <Kart>
-                <KartImg src={data.kart} />
+                {/* <KartImg src={data.kart} /> */}
             </Kart>
-            <User>{data.user}</User>
-            <Time>{data.time}</Time>
+            <User>{characterName}</User>
+            <Time>{matchTime ? addComma(matchTime) : '-'}</Time>
         </DetailsLi>
     );
 }
