@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Data } from "../atoms";
 import axios from "axios";
@@ -46,27 +47,26 @@ const Flex = styled.div`
 `;
 
 const Home = () => {
-    const [accessData, setAccessData] = useState();
-    const [data, setIsData] = useState();
-    const [loading, setLoading] = useState(true);
-    let nickname = "BBEESSTT";
-
-    // 닉네임 검색을 이용한 accessId 가져오기
-    const getUserId = (nickname) => {
-        axios
-            .get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`, {
-                headers: {
-                    Authorization: process.env.REACT_APP_NEXON_KEY,
-                },
-            })
-            .then((res) => {
-                setAccessData(res.data);
-                getMatchData(res.data.accessId);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
+  const [accessData, setAccessData] = useState();
+  const [data, setIsData] = useState();
+  const { search } = useLocation();
+  const [loading, setLoading] = useState(true);
+  // 닉네임 검색을 이용한 accessId 가져오기
+  const getUserId = (nickname) => {
+    axios
+      .get(`https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`, {
+        headers: {
+          Authorization: process.env.REACT_APP_NEXON_KEY,
+        },
+      })
+      .then((res) => {
+        setAccessData(res.data);
+        getMatchData(res.data.accessId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
     const getMatchData = (accessId) => {
         axios
@@ -87,9 +87,9 @@ const Home = () => {
             });
     };
 
-    useEffect(() => {
-        getUserId(nickname);
-    }, []);
+  useEffect(() => {
+    getUserId(search.slice(6, search.length));
+  }, [search]);
 
     return (
         <MainContainer>
