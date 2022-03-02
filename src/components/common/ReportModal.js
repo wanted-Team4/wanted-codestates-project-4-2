@@ -10,6 +10,7 @@ const ModalContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.488);
+    z-index: 10;
 `
 const ModalBox = styled.div`
     width: 350px;
@@ -46,6 +47,9 @@ const Btn = styled.button`
     background-color: #07f;
     color: #fff;
     margin-left: 5px;
+    :hover{
+        background-color: #004fab;
+    }
 `
 
 const ReportModal = ({ reportModalHandler }) => {

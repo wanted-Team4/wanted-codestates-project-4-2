@@ -10,6 +10,7 @@ import TotalRecord from '../components/TotalRecord';
 import RankChangeTrend from '../components/RankChangeTrend';
 import CheerComment from '../components/CheerComment';
 import MatchBanner from '../components/MatchBanner';
+import Left from "../components/Left";
 
 const MainContainer = styled.div`
     width: 1080px;
@@ -32,9 +33,8 @@ const Text = styled.p`
 const Info = styled.div`
     display: flex;
 `;
-const Dummy = styled.div`
-    height: 500px;
-    border: 1px solid black;
+const LeftBox = styled.div`
+    height: 550px;
     flex: 1;
 `;
 const RecordBox = styled.div`
@@ -90,10 +90,15 @@ const Home = () => {
                 <CheerComment />
             </Flex>
             <Info>
-                <Dummy />
-                <RecordBox>
-                    {data.map((data) => (
-                        <RecordCard data={data} />
+                <LeftBox>
+                    {/* <Left matchData={data}></Left> */}
+                </LeftBox>
+                <RecordBox >
+                    {data.map((data, idx) => (
+                        <RecordCard
+                            key={idx}
+                            data={data}
+                        />
                     ))}
                 </RecordBox>
             </Info>
