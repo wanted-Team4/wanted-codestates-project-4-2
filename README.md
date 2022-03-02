@@ -91,14 +91,19 @@ $ git clone "https://github.com/wanted-Team4/wanted-codestates-project-4-2.git"
 ```
 $ npm install
 ```
+3. `.env` environment variable,
 
-3. `start` the project,
+```
+REACT_APP_NEXON_KEY=
+```
+
+4. `start` the project,
 
 ```
 $ npm start
 ```
 
-4. `Setting` prettier,
+5. `Setting` prettier,
 
 ```
 $ npx prettier --write .
