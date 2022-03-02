@@ -102,7 +102,7 @@ const Home = () => {
       {data && accessData ? (
         <>
           <Profile accessData={accessData} data={data} />
-          <MatchBanner />
+          <MatchBanner accessData={accessData} />
           <Flex>
             <TotalRecord data={data} />
             <RankChangeTrend data={data} />
