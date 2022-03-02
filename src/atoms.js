@@ -8,7 +8,3 @@ export const SearchName = atom({
   key: "name",
   default: "",
 });
-export const Comments = atom({
-  key: "comments",
-  default: "",
-});

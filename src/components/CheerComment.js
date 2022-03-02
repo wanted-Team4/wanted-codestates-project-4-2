@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
-//전역으로 리코일에 저장
-const [commentList, setCommentList] = useRecoilState(newCommentList);
-
 //더미데이터
-// const commentList = [
-//   { nickname: "test", contents: "길게길게길게", date: "22-03.02" },
-//   { nickname: "test", contents: "123", date: "22-03-01" },
-// ];
+const commentList = [
+  { nickname: "test", contents: "길게길게길게", date: "22-03.02" },
+  { nickname: "test", contents: "123", date: "22-03-01" },
+];
 let newCommentList = [...commentList];
 
 //오늘날짜
 let today = new Date();
 today = today.toISOString().slice(0, 10);
+
+//응원코멘트 스크롤 최신부분으로 자동이동
+// let scrollComment = document.querySelector(".commentBoard");
+// scrollComment.scrollTop = scrollComment.scrollHeight;
 
 const CheerComment = () => {
   //응원코멘트 상태
@@ -52,13 +52,15 @@ const CheerComment = () => {
       </TextContent>
 
       <CommentBox>
-        {newCommentList.map((el, i) => (
-          <div className="commentBoard" key={i}>
-            <div className="blue">{el.nickname}</div>
-            <div className="bubble">{el.contents}</div>
-            {/* 코멘트를 보여줍니다. 닉네임 : 내용 */}
-          </div>
-        ))}
+        <div className="commentBoardBox">
+          {newCommentList.map((el, i) => (
+            <div className="commentBoard" key={i}>
+              <div className="blue">{el.nickname}</div>
+              <div className="bubble">{el.contents}</div>
+              {/* 코멘트를 보여줍니다. 닉네임 : 내용 */}
+            </div>
+          ))}
+        </div>
         <div className="commentWrite">
           <input
             className="nick"
@@ -127,11 +129,17 @@ const CommentBox = styled.div`
     width: 100%;
     border-top: 1px solid #999;
     box-sizing: board-box;
+    
+    .commentBoardBox{
+        height:130px;
+        overflow:auto;
+    
 
     .commentBoard {
         display: flex;
         padding: 10px;
         box-sizing: board-box;
+    
 
         .blue {
             width:25%;
@@ -146,6 +154,7 @@ const CommentBox = styled.div`
             flex-grow: 3;
         }
     }
+  }
 
     .commentWrite {
         display: flex;
