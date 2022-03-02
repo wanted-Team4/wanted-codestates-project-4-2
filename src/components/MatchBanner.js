@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const MatchBanner = () => {
+const MatchBanner = ({ accessData }) => {
+    //이름
+    const { name } = accessData;
+
     //modal창 상태제어
     const [toggle, setToggle] = useState(false);
 
@@ -59,7 +62,7 @@ const MatchBanner = () => {
             ) : (
                 <Container>
                     <p>
-                        1대1 매칭 시뮬레이터 - 'BBEESSTT' 와 가상 대결을
+                        1대1 매칭 시뮬레이터 - '{name}' 와 가상 대결을
                         펼쳐보세요.
                     </p>
                     {/* <button onClick={() => setToggle(true)}>매칭하기</button> */}
