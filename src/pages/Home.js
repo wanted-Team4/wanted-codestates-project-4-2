@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Data } from "../atoms";
 import axios from "axios";
@@ -47,8 +48,7 @@ const Flex = styled.div`
 const Home = () => {
   const [accessData, setAccessData] = useState();
   const [data, setIsData] = useState();
-  let nickname = "BBEESSTT";
-
+  const { search } = useLocation();
   // 닉네임 검색을 이용한 accessId 가져오기
   const getUserId = (nickname) => {
     axios
@@ -85,8 +85,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getUserId(nickname);
-  }, []);
+    getUserId(search.slice(6, search.length));
+  }, [search]);
 
   return (
     <MainContainer>
