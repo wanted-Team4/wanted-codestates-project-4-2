@@ -18,7 +18,6 @@ const TotalRecord = ({ data }) => {
     const winPercent = Math.floor((win / total) * 100);
     const completePercent = Math.floor(((win + lose) / total) * 100);
     const retirePercent = Math.floor((retire / total) * 100);
-    console.log(retire);
 
     return (
         <Container>
