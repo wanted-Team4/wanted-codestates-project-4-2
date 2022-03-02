@@ -37,8 +37,8 @@ const MatchBanner = () => {
                     </button>
                     <div>
                         <input
-                            className='matchPlayer'
-                            placeholder='매칭상대를 입력하세요.'
+                            className="matchPlayer"
+                            placeholder="매칭상대를 입력하세요."
                             onChange={onChangeMatchPlayer}
                             value={matchPlayerValue}
                         />
@@ -49,7 +49,7 @@ const MatchBanner = () => {
                     <div>
                         {/* map으로 player예시뿌려주기 */}
                         <div
-                            className='matchPlayerTag'
+                            className="matchPlayerTag"
                             onClick={() => matchPlayerTag()}
                         >
                             #{'player예시1'}

@@ -6,10 +6,10 @@ import { Data } from '../atoms';
 import axios from 'axios';
 import Profile from '../components/Profile';
 import RecordCard from '../components/RecordCard';
-import DashBoard from '../components/DashBoard';
+import TotalRecord from '../components/TotalRecord';
+import RankChangeTrend from '../components/RankChangeTrend';
 import CheerComment from '../components/CheerComment';
 import MatchBanner from '../components/MatchBanner';
-import RecordCard from '../components/RecordCard';
 
 const MainContainer = styled.div`
     width: 1080px;
@@ -39,6 +39,9 @@ const Dummy = styled.div`
 `;
 const RecordBox = styled.div`
     flex: 2;
+`;
+const Flex = styled.div`
+    display: flex;
 `;
 
 const Home = () => {
@@ -80,8 +83,12 @@ const Home = () => {
                 </Text>
             </DataInfo>
             <Profile accessData={accessData} />
-            <h1>전적조회페이지</h1>
-            <DashBoard />
+            <MatchBanner />
+            <Flex>
+                <TotalRecord />
+                <RankChangeTrend />
+                <CheerComment />
+            </Flex>
             <Info>
                 <Dummy />
                 <RecordBox>
