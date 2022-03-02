@@ -124,7 +124,7 @@ const Header = () => {
           <SearchBtn type="submit">
             <i
               style={{ color: "white", cursor: "pointer" }}
-              class="fa fa-search"
+              className="fa fa-search"
             ></i>
           </SearchBtn>
         </Search>

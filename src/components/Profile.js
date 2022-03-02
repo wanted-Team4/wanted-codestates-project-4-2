@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
-import { Data } from "../atoms";
 import Selector from "./common/Selector";
 import ShareModal from "./common/ShareModal";
 import ReportModal from "./common/ReportModal";

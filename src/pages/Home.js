@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { Data } from "../atoms";
 import axios from "axios";
 import Profile from "../components/Profile";
 import RecordCard from "../components/RecordCard";
