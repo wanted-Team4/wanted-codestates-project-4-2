@@ -3,13 +3,23 @@ import styled from 'styled-components';
 
 const DetailsLi = styled.li`
     float: left;
-    width: 73.77px;
+    width: 73.78px;
     text-align: center;
+`
+const CheckUser = styled.div`
+//     width: 73.78px;
+//     font-weight: 500;
+//     background-color: #e6e8eb;
+//     z-index: 2;
 `
 const Rank = styled.p`
     height: 40px;
     line-height: 40px;
     background-color: #f2f2f2;
+    /* z-index: 1; */
+    &.red{
+        color: #f62459;
+    }
 `
 const Kart = styled.div`
     height: 78px;
@@ -29,7 +39,7 @@ const Time = styled.p`
 `
 
 const RecordRank = ({ data, idx }) => {
-    const { matchRank, characterName, matchTime } = data
+    const { matchRank, characterName, matchTime, kart } = data
 
     const addComma = (matchTime) => {
         return matchTime.replace(/\B(?<!\.\d*)(?=(\d{2})+(?!\d))/g, "'")
@@ -41,12 +51,17 @@ const RecordRank = ({ data, idx }) => {
 
     return (
         <DetailsLi>
-            <Rank>{!matchTime ? '리타이어' : matchRank}</Rank>
-            <Kart>
-                {/* <KartImg src={data.kart} /> */}
-            </Kart>
-            <User>{characterName}</User>
-            <Time>{matchTime ? addComma(matchTime) : '-'}</Time>
+            <CheckUser>
+                <Rank className={`${matchTime}` ? null : "red"}>{matchRank === '99' ? '리타이어' : matchRank}</Rank>
+                <Kart>
+                    {kart ?
+                        <KartImg src={`/metadata/kart/${kart}.png`} /> :
+                        <KartImg src='/img/empty_kart.png' />
+                    }
+                </Kart>
+                <User>{characterName}</User>
+                <Time>{matchTime ? addComma(matchTime) : '-'}</Time>
+            </CheckUser>
         </DetailsLi>
     );
 }

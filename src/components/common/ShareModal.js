@@ -3,8 +3,9 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 160px;
     height: 150px;
-    top: 150px;
-    left: 850px;
+    top: 260px;
+    left: 910px;
+    z-index: 1;
     background-color: #fff;
     border: 1px solid #e7e7e7;
     border-radius: 5px;

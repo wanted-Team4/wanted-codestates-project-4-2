@@ -45,56 +45,6 @@ const Time = styled.p`
     height: 42px;
     line-height: 42px;
 `
-const dummy = [
-    {
-        rank: 1,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 0,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 3,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 4,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 5,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 6,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 7,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    },
-    {
-        rank: 8,
-        kart: 'metadata/kart/0000cd7b578ef4817ccf9655e16291eacb7ca9b6a1f6ede97adddd58e3d10c9c.png',
-        user: '너무대단해',
-        time: "2'12'23"
-    }
-]
 
 const RecordDetails = ({ matchId }) => {
     const [players, setPlayers] = useState([])
@@ -115,7 +65,17 @@ const RecordDetails = ({ matchId }) => {
             });
     }
 
-    console.log(players)
+    const compareRank = (a, b) => {
+        if (a.matchRank < b.matchRank) {
+            return -1;
+        }
+        if (a.matchRank > b.matchRank) {
+            return 1;
+        }
+        return 0;
+    }
+
+    players.sort(compareRank)
 
     useEffect(() => {
         getPlayersData(matchId)
