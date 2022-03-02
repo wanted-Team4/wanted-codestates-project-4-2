@@ -15,77 +15,67 @@ import {
 //     options: options,
 // });
 
-const RankChangeTrend = () => {
+const RankChangeTrend = ({ data }) => {
     //전적데이터
-    const totalGame = 200;
-    const lastGame = 2.37;
-    const recentGame = 2.72;
-    const ranking = 1;
+    const total = data.length;
+    const recentData = [...data.slice(0, 50)];
+    const totalRankSum = data.reduce((sum, cur) => {
+        return sum + cur.player.matchRank;
+    }, 0);
+    const recentRankSum = recentData.reduce((sum, cur) => {
+        return sum + cur.player.matchRank;
+    }, 0);
+    let totalRank = String(totalRankSum / 200).slice(0, 4);
+    const recentRank = String(recentRankSum / 50).slice(0, 4);
 
-    const data = [
-        { round: 1, rank: 2 },
-        { round: 2, rank: 5 },
-        { round: 3, rank: 5 },
-        { round: 4, rank: 5 },
-        { round: 5, rank: 7 },
-        { round: 6, rank: 5 },
-        { round: 7, rank: 8 },
-        { round: 8, rank: 1 },
-        { round: 9, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 1, rank: 2 },
-        { round: 2, rank: 5 },
-        { round: 3, rank: 5 },
-        { round: 4, rank: 5 },
-        { round: 5, rank: 7 },
-        { round: 6, rank: 5 },
-        { round: 7, rank: 8 },
-        { round: 8, rank: 1 },
-        { round: 9, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 1, rank: 2 },
-        { round: 2, rank: 5 },
-        { round: 3, rank: 5 },
-        { round: 4, rank: 5 },
-        { round: 5, rank: 7 },
-        { round: 6, rank: 5 },
-        { round: 7, rank: 8 },
-        { round: 8, rank: 1 },
-        { round: 9, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
-        { round: 10, rank: 1 },
+    // chart 더미 데이터
+    const chartDummyData = [
+        { rank: 8 },
+        { rank: 7 },
+        { rank: 5 },
+        { rank: 3 },
+        { rank: 1 },
+        { rank: 8 },
+        { rank: 8 },
+        { rank: 8 },
+        { rank: 8 },
+        { rank: 8 },
     ];
+
+    // let chartArr = [];
+    // for (let i = 0; i < 20; i++) {
+    // chartArr.push({ rank: data[i].player.matchRank });
+    // chartArr = data[i].player.matchRank;
+    // return chartArr;
+    // }
+    // console.log(chartArr);
+
+    // console.log('>>', chartArr);
+    //data를 아래처럼 가공해서 array에 넣어준다.
+    //이런 형식으로 어떻게 가공하지
+    // let rank = data.map((item) => item.player.matchRank);
+    // const testRank = data.map((dataItem, i) => dataItem[i].player.matchRank);
+    // const chartData = [{ rank: testRank }];
+    // console.log(testRound);
 
     return (
         <Container>
             <TextContents>
                 <div>
-                    <span className='blue'>순위변동</span>
+                    <span className="blue">순위변동</span>
                     &nbsp;
                     <span>추이</span>
                 </div>
-                <span className='small'>
-                    지난 {totalGame} &nbsp; 경기 {lastGame}위 &nbsp; 최근
-                    {recentGame}경기 &nbsp;
-                    {ranking}위
+                <span className="small">
+                    지난 {total}경기 {totalRank}위 &nbsp; 최근50경기{' '}
+                    {recentRank}위
                 </span>
             </TextContents>
             <ChartContents>
                 <LineChart
-                    width={400}
+                    width={300}
                     height={200}
-                    data={data}
+                    data={chartDummyData}
                     margin={{
                         top: 10,
                         right: 0,
@@ -93,15 +83,15 @@ const RankChangeTrend = () => {
                         bottom: 0,
                     }}
                 >
-                    <CartesianGrid strokeDasharray='3 3' />
-                    <XAxis dataKey='round' />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="round" />
                     <YAxis />
                     <Tooltip />
                     <Line
-                        type='monotone'
-                        dataKey='rank'
-                        stroke='#0088fe'
-                        fill='#0088fe'
+                        type="monotone"
+                        dataKey="rank"
+                        stroke="#0088fe"
+                        fill="#0088fe"
                     />
                 </LineChart>
             </ChartContents>
@@ -112,7 +102,9 @@ const RankChangeTrend = () => {
 export default RankChangeTrend;
 
 const Container = styled.div`
-    width: 450px;
+    width: 360px;
+    padding: 0 10px;
+    box-sizing: border-box;
 `;
 
 const TextContents = styled.div`
