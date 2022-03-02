@@ -124,7 +124,7 @@ const ToggleBtn = styled.button`
 `
 
 const RecordCard = ({ data }) => {
-    console.log(data)
+    // console.log(data)
     const { endTime, playerCount, player, trackId, matchId } = data
     const [openList, setOpenList] = useState(false);
 

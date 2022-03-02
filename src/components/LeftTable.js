@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import trackName from "../track.json";
+import trackName from "../data/track.json";
 
 const Warraper = styled.div`
   overflow-y: auto;

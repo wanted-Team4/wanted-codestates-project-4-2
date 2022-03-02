@@ -8,17 +8,18 @@ import ShareModal from './common/ShareModal';
 import ReportModal from './common/ReportModal';
 
 const ProfileContainer = styled.div`
-  height: 175px;
-  width: 1000px;
-  border-width: 1px 1px 1px 5px;
-  border-style: solid;
-  border-color: #f2f2f2 #f2f2f2 #f2f2f2 #07f;
-  background-image: url('/img/background.png');
-  background-color: rgba(0, 0, 0, 0.025);
-  background-size: cover;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    height: 175px;
+    width: 1100px;
+    border-width: 1px 1px 1px 5px;
+    border-style: solid;
+    border-color: #f2f2f2 #f2f2f2 #f2f2f2 #07f;
+    background-image: url('/img/background.png');
+    background-color: rgba(0, 0, 0, 0.025);
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 `;
 const InfoBox = styled.div`
   display: flex;
@@ -121,24 +122,21 @@ const Profile = ({ accessData }) => {
     setOpenReportModal(!openReportModal);
   };
 
-  const getMatchData = (accessId) => {
-    axios
-      .get(
-        `https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_NEXON_KEY,
-          },
-        }
-      )
-      .then((res) => {
-        setIsCharacter(res.data.matches[0].matches[0].character);
-        setIsData(res.data.matches[0].matches);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const getMatchData = (accessId) => {
+        axios.get(`https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
+            {
+                headers: {
+                    Authorization: process.env.REACT_APP_NEXON_KEY
+                }
+            })
+            .then((res) => {
+                setIsCharacter(res.data.matches[0].matches[0].character);
+                setIsData(res.data.matches[0].matches);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
   const characterImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${isCharacter}.png`;
 
