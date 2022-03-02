@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import DashBoard from '../components/DashBoard';
 import CheerComment from '../components/CheerComment';
+import MatchBanner from '../components/MatchBanner';
 
 const Home = () => {
     return (
         <Container>
             <h1>전적조회페이지</h1>
+            <MatchBanner />
             <Flex>
                 <DashBoard />
                 <CheerComment />
