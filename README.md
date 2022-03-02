@@ -12,6 +12,9 @@
 
 | 개인 전적 조회 페이지 | 랭킹 페이지 |
 | :-------------------: | :---------: |
+|![개인 전적 저회](https://user-images.githubusercontent.com/87534763/156378137-ca9c0981-6ad6-475e-9578-4ed1be685321.gif)
+ | ![랭킹 페이지](https://user-images.githubusercontent.com/87534763/156377725-af0ef90a-c5a4-4800-8178-636283f79de2.gif)
+|
 
 ### <br/>
 
