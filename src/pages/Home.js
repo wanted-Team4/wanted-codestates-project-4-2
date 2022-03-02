@@ -12,6 +12,7 @@ import RankChangeTrend from "../components/RankChangeTrend";
 import CheerComment from "../components/CheerComment";
 import MatchBanner from "../components/MatchBanner";
 import Left from "../components/Left";
+import Loading from "../components/common/Loading";
 
 const MainContainer = styled.div`
   width: 1080px;
@@ -49,6 +50,7 @@ const Home = () => {
   const [accessData, setAccessData] = useState();
   const [data, setIsData] = useState();
   const { search } = useLocation();
+  const [loading, setLoading] = useState(true);
   // 닉네임 검색을 이용한 accessId 가져오기
   const getUserId = (nickname) => {
     axios
@@ -66,61 +68,62 @@ const Home = () => {
       });
   };
 
-  const getMatchData = (accessId) => {
-    axios
-      .get(
-        `https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_NEXON_KEY,
-          },
-        }
-      )
-      .then((res) => {
-        setIsData(res.data.matches[0].matches);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const getMatchData = (accessId) => {
+        axios
+            .get(
+                `https://api.nexon.co.kr/kart/v1.0/users/${accessId}/matches?start_date=&end_date=&offset=0&limit=200&match_types=`,
+                {
+                    headers: {
+                        Authorization: process.env.REACT_APP_NEXON_KEY,
+                    },
+                }
+            )
+            .then((res) => {
+                setIsData(res.data.matches[0].matches);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
   useEffect(() => {
     getUserId(search.slice(6, search.length));
   }, [search]);
 
-  return (
-    <MainContainer>
-      <DataInfo>
-        <i className="fa-solid fa-circle-info"></i>
-        <Text>
-          {" "}
-          카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
-        </Text>
-      </DataInfo>
-
-      {data && accessData ? (
-        <>
-          <Profile accessData={accessData} />
-          <MatchBanner />
-          <Flex>
-            <TotalRecord data={data} />
-            <RankChangeTrend data={data} />
-            <CheerComment />
-          </Flex>
-          <Info>
-            <LeftBox>
-              <Left matchData={data}></Left>
-            </LeftBox>
-            <RecordBox>
-              {data.map((data, idx) => (
-                <RecordCard key={idx} data={data} />
-              ))}
-            </RecordBox>
-          </Info>
-        </>
-      ) : null}
-    </MainContainer>
-  );
+    return (
+        <MainContainer>
+            <DataInfo>
+                <i className="fa-solid fa-circle-info"></i>
+                <Text>
+                    {" "}
+                    카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
+                </Text>
+            </DataInfo>
+            {loading ? <Loading /> : <></>}
+            {data && accessData ? (
+                <>
+                    <Profile accessData={accessData} data={data} />
+                    <MatchBanner />
+                    <Flex>
+                        <TotalRecord data={data} />
+                        <RankChangeTrend data={data} />
+                        <CheerComment />
+                    </Flex>
+                    <Info>
+                        <LeftBox>
+                            <Left matchData={data}></Left>
+                        </LeftBox>
+                        <RecordBox>
+                            {data.map((data, idx) => (
+                                <RecordCard key={idx} data={data} />
+                            ))}
+                        </RecordBox>
+                    </Info>
+                </>
+            ) : null}
+        </MainContainer>
+    );
 };
 
 export default Home;

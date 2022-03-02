@@ -107,63 +107,64 @@ const ViewCount = styled.p`
   font-weight: 600;
 `;
 
-const Profile = ({ accessData }) => {
-  const { accessId, name, level } = accessData;
-  const [isCharacter, setIsCharacter] = useState("");
-  const [openShareModal, setOpenShareModal] = useState(false);
-  const [openReportModal, setOpenReportModal] = useState(false);
+const Profile = ({ accessData, data }) => {
+    const { accessId, name, level } = accessData;
+    const isCharacter = data[0].player.character
 
-  const shareModalHandler = () => {
-    setOpenShareModal(!openShareModal);
-  };
+    const [openShareModal, setOpenShareModal] = useState(false);
+    const [openReportModal, setOpenReportModal] = useState(false);
 
-  const reportModalHandler = () => {
-    setOpenReportModal(!openReportModal);
-  };
+    const shareModalHandler = () => {
+        setOpenShareModal(!openShareModal);
+    };
 
-  const characterImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${isCharacter}.png`;
+    const reportModalHandler = () => {
+        setOpenReportModal(!openReportModal);
+    };
 
-  return (
-    <ProfileContainer>
-      <InfoBox>
-        <AvatarImageBox src={characterImg} />
-        <Info>
-          <UserInfo>
-            <Name>{name}</Name>
-            <License>Level {level}</License>
-          </UserInfo>
-          <LinkBox>
-            <Selector />
-            <UserAction>
-              <RerenderBtn>
-                <i className="fa-solid fa-rotate-right"></i> 전적갱신
-              </RerenderBtn>
-              <ReportBtn onClick={reportModalHandler}>
-                <i className="fa-solid fa-bell"></i> 신고하기
-              </ReportBtn>
-              {openReportModal ? (
-                <ReportModal reportModalHandler={reportModalHandler} />
-              ) : null}
-              <ShareBtn onClick={shareModalHandler}>
-                <i className="fa-solid fa-share-nodes"></i> 공유하기
-              </ShareBtn>
-              {openShareModal ? (
-                <ShareModal shareModalHandler={shareModalHandler} />
-              ) : null}
-            </UserAction>
-          </LinkBox>
-        </Info>
-      </InfoBox>
-      <ViewBox>
-        <ViveTitle>
-          <Title>
-            <i className="fa-solid fa-eye"></i> 페이지뷰
-          </Title>
-        </ViveTitle>
-        <ViewCount>920</ViewCount>
-      </ViewBox>
-    </ProfileContainer>
-  );
+    const characterImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${isCharacter}.png`;
+
+    return (
+        <ProfileContainer>
+            <InfoBox>
+                <AvatarImageBox src={characterImg} />
+                <Info>
+                    <UserInfo>
+                        <Name>{name}</Name>
+                        <License>Level {level}</License>
+                    </UserInfo>
+                    <LinkBox>
+                        <Selector />
+                        <UserAction>
+                            <RerenderBtn>
+                                <i className="fa-solid fa-rotate-right"></i> 전적갱신
+                            </RerenderBtn>
+                            <ReportBtn onClick={reportModalHandler}>
+                                <i className="fa-solid fa-bell"></i> 신고하기
+                            </ReportBtn>
+                            {openReportModal ? (
+                                <ReportModal reportModalHandler={reportModalHandler} />
+                            ) : null}
+                            <ShareBtn onClick={shareModalHandler}>
+                                <i className="fa-solid fa-share-nodes"></i> 공유하기
+                            </ShareBtn>
+                            {openShareModal ? (
+                                <ShareModal shareModalHandler={shareModalHandler} />
+                            ) : null}
+                        </UserAction>
+                    </LinkBox>
+                </Info>
+            </InfoBox>
+            <ViewBox>
+                <ViveTitle>
+                    <Title>
+                        <i className="fa-solid fa-eye"></i> 페이지뷰
+                    </Title>
+                </ViveTitle>
+                <ViewCount>920</ViewCount>
+            </ViewBox>
+        </ProfileContainer>
+    );
 };
 
 export default Profile;
