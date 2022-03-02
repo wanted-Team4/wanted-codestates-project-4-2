@@ -62,7 +62,7 @@ const MatchBanner = () => {
                         1대1 매칭 시뮬레이터 - 'BBEESSTT' 와 가상 대결을
                         펼쳐보세요.
                     </p>
-                    <button onClick={() => setToggle(true)}>매칭하기</button>
+                    {/* <button onClick={() => setToggle(true)}>매칭하기</button> */}
                 </Container>
             )}
         </>
