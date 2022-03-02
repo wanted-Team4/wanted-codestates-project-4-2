@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
@@ -47,12 +47,12 @@ const Description = () => {
   return (
     <Container>
       <div>
-        <div className='description-title'>3월 TMI 랭킹</div>
-        <div className='description-divider' />
-        <div className='description-sub'>
+        <div className="description-title">3월 TMI 랭킹</div>
+        <div className="description-divider" />
+        <div className="description-sub">
           랭킹 산정기간 2022년 03월 01일 00:00:00 ~ 2022년 03월 31일 24:00:00
         </div>
-        <div className='description-sub'>
+        <div className="description-sub">
           최근 업데이트 2022년 03월 01일 09:22:51
         </div>
       </div>

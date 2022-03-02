@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
-import { Data } from "../atoms";
 import Selector from "./common/Selector";
 import ShareModal from "./common/ShareModal";
 import ReportModal from "./common/ReportModal";
@@ -107,9 +104,10 @@ const ViewCount = styled.p`
   font-weight: 600;
 `;
 
-const Profile = ({ accessData }) => {
-  const { accessId, name, level } = accessData;
-  const [isCharacter, setIsCharacter] = useState("");
+const Profile = ({ accessData, data }) => {
+  const { name, level } = accessData;
+  const isCharacter = data[0].player.character;
+
   const [openShareModal, setOpenShareModal] = useState(false);
   const [openReportModal, setOpenReportModal] = useState(false);
 
@@ -148,7 +146,7 @@ const Profile = ({ accessData }) => {
                 <i className="fa-solid fa-share-nodes"></i> 공유하기
               </ShareBtn>
               {openShareModal ? (
-                <ShareModal shareModalHandler={shareModalHandler} />
+                <ShareModal shareModalHandler={shareModalHandler} name={name} />
               ) : null}
             </UserAction>
           </LinkBox>

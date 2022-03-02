@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import json from '../data/Rank.json';
+
 const RankingEtc = () => {
   const [itemIndex, setItemIndex] = useState(0);
   const [result, setResult] = useState(json.slice(0, 20));
@@ -43,8 +45,8 @@ const RankingEtc = () => {
     }
   }, [itemIndex, result]);
   useEffect(() => {
-    window.addEventListener('scroll', _infiniteScroll, true);
-    return () => window.removeEventListener('scroll', _infiniteScroll, true);
+    window.addEventListener("scroll", _infiniteScroll, true);
+    return () => window.removeEventListener("scroll", _infiniteScroll, true);
   }, [_infiniteScroll]);
 
   return (

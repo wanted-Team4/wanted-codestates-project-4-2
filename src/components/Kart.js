@@ -110,8 +110,8 @@ const Kart = ({ selectCartId, kartData }) => {
                     return a.trackId < b.trackId
                       ? -1
                       : a.trackId > b.trackId
-                        ? 1
-                        : 0;
+                      ? 1
+                      : 0;
                   })
                   .filter((record) => record.record !== 0)
               )

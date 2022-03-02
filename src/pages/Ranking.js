@@ -1,8 +1,8 @@
-import Description from '../components/Description';
-import RankingEtcBox from '../components/RankingEtcBox';
-import RankingTop from '../components/RankingTop';
-import React from 'react';
-import styled from 'styled-components';
+import Description from "../components/Description";
+import RankingEtcBox from "../components/RankingEtcBox";
+import RankingTop from "../components/RankingTop";
+import React from "react";
+import styled from "styled-components";
 // import waveimg from '../../public/img/waveimg';
 
 const Ranking = () => {
@@ -14,14 +14,14 @@ const Ranking = () => {
           <RankingTop />
         </Container>
         <div
-          className='wave wave1'
+          className="wave wave1"
           style={{
-            background: 'url(/img/wave.png)',
+            background: "url(/img/wave.png)",
           }}
         />
         <div
-          className='wave wave2'
-          style={{ background: 'url(/img/wave.png)' }}
+          className="wave wave2"
+          style={{ background: "url(/img/wave.png)" }}
         />
       </Section>
       <RankingEtcBox />

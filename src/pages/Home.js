@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { Data } from "../atoms";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Profile from "../components/Profile";
 import RecordCard from "../components/RecordCard";
@@ -11,6 +10,7 @@ import RankChangeTrend from "../components/RankChangeTrend";
 import CheerComment from "../components/CheerComment";
 import MatchBanner from "../components/MatchBanner";
 import Left from "../components/Left";
+import Loading from "../components/common/Loading";
 
 const MainContainer = styled.div`
   width: 1080px;
@@ -47,8 +47,8 @@ const Flex = styled.div`
 const Home = () => {
   const [accessData, setAccessData] = useState();
   const [data, setIsData] = useState();
-  let nickname = "BBEESSTT";
-
+  const { search } = useLocation();
+  const [loading, setLoading] = useState(true);
   // 닉네임 검색을 이용한 accessId 가져오기
   const getUserId = (nickname) => {
     axios
@@ -78,6 +78,7 @@ const Home = () => {
       )
       .then((res) => {
         setIsData(res.data.matches[0].matches);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -85,8 +86,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getUserId(nickname);
-  }, []);
+    getUserId(search.slice(6, search.length));
+  }, [search]);
 
   return (
     <MainContainer>
@@ -97,11 +98,11 @@ const Home = () => {
           카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
         </Text>
       </DataInfo>
-
+      {loading ? <Loading /> : <></>}
       {data && accessData ? (
         <>
-          <Profile accessData={accessData} />
-          <MatchBanner />
+          <Profile accessData={accessData} data={data} />
+          <MatchBanner accessData={accessData} />
           <Flex>
             <TotalRecord data={data} />
             <RankChangeTrend data={data} />
