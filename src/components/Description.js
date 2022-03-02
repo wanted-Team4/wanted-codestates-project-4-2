@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   color: white;
+  width: 80%;
   font-weight: 500;
   display: flex;
   justify-content: center;
   text-align: left;
-  margin: 0 6% 0 6%;
+  margin-left: 12%;
   flex-direction: column;
 
   .description-title {
