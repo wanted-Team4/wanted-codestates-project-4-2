@@ -1,8 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React from 'react';
-import Home from './pages/Home';
-import styled from 'styled-components';
+
 import Header from './components/Header';
+import Home from './pages/Home';
+import Ranking from './pages/Ranking';
+import React from 'react';
+import styled from 'styled-components';
 
 const App = () => {
   return (
@@ -10,7 +12,8 @@ const App = () => {
       <Header />
       <MainContainer>
         <Routes>
-          <Route exact path='/' element={<Home></Home>} />
+          <Route exact path='/rank' element={<Ranking />} />
+          <Route exact path='/' element={<Home />} />
         </Routes>
       </MainContainer>
     </BrowserRouter>
