@@ -51,6 +51,8 @@ const RankingEtc = () => {
 const EtcMian = styled.ul`
   // 전체를 감싸는 ul
   list-style: none;
+  position: relative;
+  top: 390px;
 `;
 const EtcSub = styled.li`
   //  ul안에 바로 li 태그
@@ -73,6 +75,7 @@ const EtcContents = styled.div`
   height: 40px;
   background-color: #fff;
   border: 1px solid #f2f2f2;
+  margin: 10px 0px;
   &:hover {
     border: 2px solid #0077ff;
     color: #0077ff;
