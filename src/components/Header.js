@@ -107,9 +107,9 @@ const Header = () => {
         <TabMenu>
           <Menu>
             <MenuContent
-              isExact={location.pathname === "/?nick=BBEESSTT" ? 1 : 0}
+              isExact={location.pathname === "/?nick=1234kcm" ? 1 : 0}
             >
-              <Link to="/?nick=BBEESSTT">홈</Link>
+              <Link to="/?nick=1234kcm">홈</Link>
             </MenuContent>
           </Menu>
           <Menu>
